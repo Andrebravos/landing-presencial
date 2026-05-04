@@ -1,0 +1,3599 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0D1B2A" />
+    <title>Biomecánica, Anatomía y Ejecución — Curso Presencial · Academy by Physica</title>
+    <meta
+      name="description"
+      content="Curso presencial intensivo de fin de semana. Sábado teórico + Domingo práctico. Dictado por André Bravo (Kinesiólogo · CSCS · RTSm) con el equipo de coaches Physica. Cupos limitados."
+    />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Biomecánica, Anatomía y Ejecución" />
+    <meta
+      property="og:description"
+      content="Curso presencial intensivo de fin de semana — Academy by Physica. Cupos limitados."
+    />
+    <meta property="og:locale" content="es_CL" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =====================================================
+         AES Design System — Biomecánica, Anatomía y Ejecución
+         Dark theme · Inter · Red accent
+         ===================================================== */
+
+      :root {
+        --bg: #0d1b2a;
+        --bg-card: #162236;
+        --bg-secondary: #1c2e45;
+        --bg-cream: #f5f2ee;
+        --bg-cream-border: #e8e3dd;
+
+        --border: #1e3a5f;
+        --border-soft: #2a3f60;
+
+        --text: #ffffff;
+        --text-soft: #c8d3df;
+        --text-muted: #8a9bb0;
+        --text-dim: #4a6280;
+
+        --accent-red: #8b0000;
+        --accent-red-hover: #a50000;
+        --accent-red-soft: #ff5c5c;
+        --accent-red-light: #ff8a8a;
+
+        --accent-blue: #2d6be4;
+        --accent-blue-light: #9fc5ff;
+        --accent-blue-dot: #4a90d9;
+
+        --success: #34d399;
+        --success-light: #6ee7b7;
+        --success-deep: #059669;
+
+        --whatsapp: #25d366;
+        --whatsapp-hover: #1ebe57;
+
+        --radius-card: 14px;
+        --radius-btn: 12px;
+        --radius-pill: 9999px;
+
+        --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.2),
+          0 4px 12px rgba(0, 0, 0, 0.25);
+        --shadow-card-hover: 0 0 0 1px var(--accent-red),
+          0 8px 24px rgba(139, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+        cursor: pointer;
+        border: none;
+      }
+
+      ::selection {
+        background: rgba(139, 0, 0, 0.4);
+        color: #fff;
+      }
+
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--bg);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 3px;
+      }
+
+      /* ===== Layout ===== */
+      .container {
+        max-width: 1152px;
+        margin: 0 auto;
+        padding: 0 1.25rem;
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding: 0 1.5rem;
+        }
+      }
+
+      /* ===== Nav ===== */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        background: var(--bg-cream);
+        border-bottom: 1px solid var(--bg-cream-border);
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1.25rem;
+        max-width: 1152px;
+        margin: 0 auto;
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        color: #1a1a2e;
+        min-width: 0;
+      }
+
+      .nav-brand .nav-logo-img {
+        height: 56px;
+        width: auto;
+        max-width: 180px;
+        object-fit: contain;
+        filter: brightness(0);
+        flex-shrink: 0;
+      }
+
+      .nav-brand .nav-tagline {
+        display: none;
+        color: #6b7280;
+        font-size: 0.75rem;
+        border-left: 1px solid #d4cfc8;
+        padding-left: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+
+      @media (min-width: 768px) {
+        .nav-brand .nav-tagline {
+          display: inline-flex;
+        }
+        .nav-brand .nav-logo-img {
+          height: 64px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-brand .nav-logo-img {
+          height: 44px;
+        }
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--accent-red);
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0.55rem 1rem;
+        border-radius: 10px;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+
+      .nav-cta:hover {
+        background: var(--accent-red-hover);
+        transform: translateY(-1px);
+      }
+
+      .nav-cta svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      /* ===== Sections ===== */
+      section {
+        position: relative;
+      }
+
+      .section-pad {
+        padding: 4rem 0;
+      }
+
+      @media (min-width: 768px) {
+        .section-pad {
+          padding: 5rem 0;
+        }
+      }
+
+      .eyebrow-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.375rem 0.75rem;
+        border-radius: var(--radius-pill);
+        background: rgba(139, 0, 0, 0.15);
+        border: 1px solid rgba(139, 0, 0, 0.4);
+        margin-bottom: 1rem;
+      }
+
+      .eyebrow-pill .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-red-soft);
+      }
+
+      .eyebrow-pill .label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--accent-red-light);
+        letter-spacing: 0.14em;
+      }
+
+      .eyebrow-pill.is-blue {
+        background: rgba(45, 107, 228, 0.12);
+        border-color: rgba(45, 107, 228, 0.35);
+      }
+      .eyebrow-pill.is-blue .dot {
+        background: var(--accent-blue-dot);
+      }
+      .eyebrow-pill.is-blue .label {
+        color: var(--accent-blue-light);
+      }
+
+      .eyebrow-pill.is-green {
+        background: rgba(52, 211, 153, 0.12);
+        border-color: rgba(52, 211, 153, 0.35);
+      }
+      .eyebrow-pill.is-green .dot {
+        background: var(--success);
+      }
+      .eyebrow-pill.is-green .label {
+        color: var(--success-light);
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: 700;
+        line-height: 1.1;
+        margin: 0;
+        color: #fff;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.25rem);
+        letter-spacing: -0.02em;
+      }
+
+      h2 {
+        font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+        line-height: 1.15;
+        letter-spacing: -0.015em;
+      }
+
+      h3 {
+        font-size: 1.125rem;
+      }
+
+      .lead {
+        color: var(--text-muted);
+        font-size: 1.0625rem;
+        max-width: 640px;
+      }
+
+      /* ===== Shimmer ===== */
+      @keyframes textShimmer {
+        0% {
+          background-position: 200% center;
+        }
+        50% {
+          background-position: -200% center;
+        }
+        100% {
+          background-position: -200% center;
+        }
+      }
+
+      .text-shimmer {
+        background-image: linear-gradient(
+          110deg,
+          #2d6be4 20%,
+          #2d6be4 35%,
+          #ffffff 44%,
+          #9fc5ff 48%,
+          #ffffff 52%,
+          #2d6be4 65%,
+          #2d6be4 80%
+        );
+        background-size: 300% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: textShimmer 5s ease-in-out infinite;
+      }
+
+      /* ===== Hero ===== */
+      .hero {
+        padding: 4rem 0 2rem;
+        text-align: center;
+      }
+
+      @media (min-width: 1024px) {
+        .hero {
+          padding: 6rem 0 3rem;
+        }
+      }
+
+      .hero-eyebrow {
+        font-size: 0.8125rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #fff;
+        margin-bottom: 1rem;
+        text-transform: none;
+      }
+
+      .hero h1 {
+        max-width: 880px;
+        margin: 0 auto 1.5rem;
+      }
+
+      .hero .lead {
+        margin: 0 auto 2.5rem;
+      }
+
+      .hero-cards {
+        display: grid;
+        gap: 1.25rem;
+        max-width: 960px;
+        margin: 0 auto 3rem;
+      }
+
+      @media (min-width: 640px) {
+        .hero-cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .hero-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-card);
+        padding: 1.5rem 1.25rem;
+        text-align: center;
+        transition: transform 0.2s ease, border-color 0.2s ease,
+          box-shadow 0.2s ease;
+        box-shadow: var(--shadow-card);
+      }
+
+      .hero-card:hover {
+        border-color: var(--accent-red);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-card-hover);
+      }
+
+      .hero-card .icon-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(139, 0, 0, 0.12);
+        color: var(--accent-red-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+      }
+
+      .hero-card .icon-circle svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .hero-card h3 {
+        font-size: 0.9375rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero-card p {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* ===== Stats Bar ===== */
+      .stats-bar {
+        background: rgba(22, 34, 54, 0.5);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 1.75rem 0;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .stats-grid .stat-num {
+        font-size: clamp(1.5rem, 3.5vw, 1.875rem);
+        font-weight: 700;
+      }
+
+      .stats-grid .stat-num.blue {
+        color: var(--accent-blue-light);
+      }
+      .stats-grid .stat-num.red {
+        color: var(--accent-red-soft);
+      }
+      .stats-grid .stat-num.green {
+        color: var(--success);
+      }
+
+      .stats-grid .stat-label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-top: 0.25rem;
+      }
+
+      .stat-icon {
+        width: 56px;
+        height: 56px;
+        margin: 0 auto 0.55rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        transition: transform 0.3s ease;
+      }
+
+      .stat-icon svg {
+        width: 70%;
+        height: 70%;
+        display: block;
+      }
+
+      .stats-grid > div:hover .stat-icon {
+        transform: translateY(-2px) scale(1.04);
+      }
+
+      .stat-icon.blue {
+        color: var(--accent-blue-light);
+        background: rgba(45, 107, 228, 0.12);
+        box-shadow: inset 0 0 0 1px rgba(45, 107, 228, 0.25);
+      }
+      .stat-icon.red {
+        color: var(--accent-red-soft);
+        background: rgba(139, 0, 0, 0.14);
+        box-shadow: inset 0 0 0 1px rgba(139, 0, 0, 0.3);
+      }
+      .stat-icon.green {
+        color: var(--success);
+        background: rgba(52, 211, 153, 0.12);
+        box-shadow: inset 0 0 0 1px rgba(52, 211, 153, 0.3);
+      }
+
+      /* ===== Buttons ===== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.85rem 1.5rem;
+        border-radius: var(--radius-btn);
+        transition: background 0.2s ease, transform 0.2s ease,
+          box-shadow 0.2s ease;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+
+      .btn-red {
+        background: var(--accent-red);
+        color: #fff;
+      }
+
+      .btn-red:hover {
+        background: var(--accent-red-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(139, 0, 0, 0.4);
+      }
+
+      .btn-whatsapp {
+        background: var(--whatsapp);
+        color: #fff;
+      }
+
+      .btn-whatsapp:hover {
+        background: var(--whatsapp-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      }
+
+      .btn-ghost {
+        background: transparent;
+        color: var(--text-soft);
+        border: 1px solid var(--border);
+      }
+
+      .btn-ghost:hover {
+        border-color: var(--accent-red);
+        color: #fff;
+      }
+
+      .btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .btn-lg {
+        padding: 1rem 2rem;
+        font-size: 1.0625rem;
+      }
+
+      /* ===== Brief / About ===== */
+      .brief-grid {
+        display: grid;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .brief-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+        }
+      }
+
+      .brief-text p {
+        color: var(--text-soft);
+        line-height: 1.7;
+        margin: 0 0 1rem;
+      }
+
+      .brief-text strong {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .brief-side {
+        background: linear-gradient(
+          135deg,
+          rgba(45, 107, 228, 0.06) 0%,
+          rgba(139, 0, 0, 0.04) 100%
+        );
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.75rem;
+      }
+
+      .brief-side h4 {
+        margin: 0 0 1rem;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent-blue-light);
+        font-weight: 700;
+      }
+
+      .brief-side ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .brief-side li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.625rem 0;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+        color: var(--text-soft);
+        font-size: 0.9375rem;
+      }
+
+      .brief-side li:last-child {
+        border-bottom: none;
+      }
+
+      .brief-side li .li-label {
+        color: var(--text-muted);
+        min-width: 110px;
+        font-size: 0.8125rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        font-weight: 600;
+      }
+
+      .brief-side li .li-value {
+        color: #fff;
+        font-weight: 500;
+      }
+
+      /* ===== Tabs (Sábado / Domingo) ===== */
+      .tabs {
+        display: inline-flex;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-pill);
+        padding: 0.25rem;
+        gap: 0.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .tab-btn {
+        background: transparent;
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 0.55rem 1.15rem;
+        border-radius: var(--radius-pill);
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .tab-btn:hover {
+        color: #fff;
+      }
+
+      .tab-btn[aria-selected="true"] {
+        background: var(--accent-red);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(139, 0, 0, 0.4);
+      }
+
+      .tab-btn svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .tabs-meta {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin-bottom: 1.5rem;
+      }
+
+      .tabs-meta strong {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .tab-panel {
+        display: none;
+      }
+
+      .tab-panel.is-active {
+        display: block;
+        animation: fadeUp 0.4s ease-out;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== Module Cards Grid ===== */
+      .module-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .module-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .module-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .module-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-card);
+        padding: 1.25rem;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease, border-color 0.2s ease,
+          box-shadow 0.2s ease;
+        box-shadow: var(--shadow-card);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .module-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(
+          180deg,
+          var(--accent-blue) 0%,
+          var(--accent-blue-dot) 100%
+        );
+        opacity: 0.6;
+        transition: opacity 0.2s ease;
+      }
+
+      .module-card.practice::before {
+        background: linear-gradient(
+          180deg,
+          var(--accent-red) 0%,
+          var(--accent-red-soft) 100%
+        );
+      }
+
+      .module-card:hover {
+        border-color: var(--accent-red);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-card-hover);
+      }
+
+      .module-card:hover::before {
+        opacity: 1;
+      }
+
+      .module-card .num {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        color: var(--success);
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        margin-left: 0.5rem;
+      }
+
+      .module-card.practice .num {
+        color: var(--accent-red-light);
+      }
+
+      .module-card h3 {
+        font-size: 1.0625rem;
+        line-height: 1.25;
+        margin: 0 0 0.25rem 0.5rem;
+      }
+
+      .module-card p {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        line-height: 1.55;
+        margin: 0 0 0 0.5rem;
+      }
+
+      /* Practical (Domingo) cards — slightly larger numeric callout */
+      .module-card.practice .icon-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(139, 0, 0, 0.12);
+        color: var(--accent-red-light);
+        padding: 0.25rem 0.65rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-left: 0.5rem;
+        align-self: flex-start;
+      }
+
+      .module-card.practice .icon-tag svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      /* ===== Fechas ===== */
+      .fechas-grid {
+        display: grid;
+        gap: 1.25rem;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      @media (min-width: 1280px) {
+        .fechas-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .fecha-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.5rem 1.25rem;
+        position: relative;
+        transition: transform 0.2s ease, border-color 0.2s ease,
+          box-shadow 0.2s ease;
+        box-shadow: var(--shadow-card);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .fecha-card[data-status="pocos"] {
+        border-color: rgba(245, 158, 11, 0.45);
+        box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.15) inset, var(--shadow-card);
+      }
+
+      .fecha-card[data-status="agotado"] {
+        opacity: 0.65;
+      }
+
+      .fecha-card:not([data-status="agotado"]):hover {
+        transform: translateY(-2px);
+        border-color: var(--accent-red);
+        box-shadow: var(--shadow-card-hover);
+      }
+
+      .fecha-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.25rem 0.65rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* Inline (dentro de eyebrow-row o flag-row) — empuja a la derecha
+         con margin-left auto, y wrappea bajo el eyebrow si no entra. */
+      .fecha-status.is-inline {
+        margin-left: auto;
+      }
+
+      .fecha-eyebrow-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+        margin-top: 0.25rem;
+      }
+
+      .fecha-eyebrow-row .fecha-month {
+        margin-top: 0;
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      .fecha-flag-row {
+        width: 100%;
+      }
+
+      [data-status="disponible"] .fecha-status {
+        background: rgba(52, 211, 153, 0.12);
+        color: var(--success-light);
+        border: 1px solid rgba(52, 211, 153, 0.35);
+      }
+
+      [data-status="pocos"] .fecha-status {
+        background: rgba(245, 158, 11, 0.14);
+        color: #fbbf24;
+        border: 1px solid rgba(245, 158, 11, 0.4);
+      }
+
+      [data-status="agotado"] .fecha-status {
+        background: rgba(74, 98, 128, 0.18);
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+      }
+
+      .fecha-status .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+
+      [data-status="disponible"] .fecha-status .dot {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      [data-status="pocos"] .fecha-status .dot {
+        animation: pulse 1.4s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.85);
+        }
+      }
+
+      .fecha-month {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent-red-light);
+        margin-top: 0.25rem;
+      }
+
+      .fecha-day {
+        font-size: 2.25rem;
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.02em;
+        color: #fff;
+        margin: 0.25rem 0;
+      }
+
+      .fecha-year {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      .fecha-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+        font-size: 0.875rem;
+        color: var(--text-soft);
+        border-top: 1px solid var(--border);
+        padding-top: 0.85rem;
+      }
+
+      .fecha-meta-row {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+      }
+
+      .fecha-meta-row svg {
+        width: 14px;
+        height: 14px;
+        color: var(--text-muted);
+        flex-shrink: 0;
+      }
+
+      .fecha-cupos {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+      }
+
+      .fecha-cupos strong {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .fecha-countdown {
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent-blue-light);
+        margin-top: 0.15rem;
+      }
+
+      .fecha-countdown.is-urgent {
+        color: #fbbf24;
+      }
+
+      .fecha-countdown.is-imminent {
+        color: var(--accent-red-light);
+      }
+
+      /* Mini progress bar inside fecha card */
+      .fecha-progress {
+        height: 4px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+        overflow: hidden;
+        margin-top: 0.5rem;
+      }
+
+      .fecha-progress-fill {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--success) 0%,
+          var(--success-light) 100%
+        );
+        border-radius: 999px;
+        transition: width 0.6s ease;
+      }
+
+      .fecha-card[data-status="pocos"] .fecha-progress-fill {
+        background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
+      }
+
+      .fecha-card[data-status="agotado"] .fecha-progress-fill {
+        background: var(--text-dim);
+      }
+
+      /* Special edition styling — Chile / Argentina / preventa */
+      .fecha-card.is-special {
+        background: linear-gradient(
+          155deg,
+          var(--bg-card) 0%,
+          rgba(45, 107, 228, 0.08) 60%,
+          rgba(159, 197, 255, 0.05) 100%
+        );
+        border-color: rgba(159, 197, 255, 0.3);
+      }
+
+      .fecha-card.is-special::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-blue) 0%,
+          var(--accent-blue-light) 50%,
+          var(--accent-blue) 100%
+        );
+        border-radius: 16px 16px 0 0;
+      }
+
+      .fecha-flag-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+
+      .fecha-flag {
+        width: 30px;
+        height: 20px;
+        border-radius: 3px;
+        overflow: hidden;
+        flex-shrink: 0;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .fecha-flag svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .fecha-special-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.3rem 0.6rem;
+        border-radius: var(--radius-pill);
+        background: linear-gradient(
+          135deg,
+          rgba(45, 107, 228, 0.18) 0%,
+          rgba(159, 197, 255, 0.1) 100%
+        );
+        border: 1px solid rgba(159, 197, 255, 0.4);
+        color: var(--accent-blue-light);
+        font-size: 0.625rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .fecha-special-badge svg {
+        width: 11px;
+        height: 11px;
+      }
+
+      .fecha-price-chip {
+        display: flex;
+        align-items: baseline;
+        gap: 0.4rem;
+        padding: 0.6rem 0.8rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-top: 0.25rem;
+      }
+
+      .fecha-card.is-special .fecha-price-chip {
+        background: linear-gradient(
+          135deg,
+          rgba(45, 107, 228, 0.1) 0%,
+          rgba(52, 211, 153, 0.06) 100%
+        );
+        border-color: rgba(159, 197, 255, 0.35);
+      }
+
+      .fecha-price-chip .price-amount {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.0625rem;
+        letter-spacing: -0.01em;
+      }
+
+      .fecha-price-chip .price-currency {
+        color: var(--text-muted);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+
+      .fecha-price-chip .price-note {
+        color: var(--success-light);
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-left: auto;
+      }
+
+      .fecha-card:not(.is-special) .fecha-price-chip .price-note {
+        color: var(--text-muted);
+      }
+
+      .fecha-card .btn {
+        margin-top: auto;
+        font-size: 0.875rem;
+        padding: 0.7rem 1rem;
+      }
+
+      .fecha-card[data-status="agotado"] .btn {
+        background: rgba(74, 98, 128, 0.18);
+        color: var(--text-muted);
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .fecha-card[data-status="agotado"] .btn:hover {
+        background: rgba(74, 98, 128, 0.18);
+        transform: none;
+        box-shadow: none;
+      }
+
+      /* ===== Banner full-width ===== */
+      .banner-section {
+        padding: 0;
+        margin: 4rem 0;
+      }
+
+      .banner-frame {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 21 / 9;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          var(--bg-card) 0%,
+          var(--bg-secondary) 100%
+        );
+      }
+
+      .banner-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
+        transition: transform 8s ease-out;
+      }
+
+      .banner-frame:hover .banner-img {
+        transform: scale(1.04);
+      }
+
+      .banner-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: clamp(1.5rem, 4vw, 3.5rem);
+        background: linear-gradient(
+          180deg,
+          rgba(13, 27, 42, 0.1) 0%,
+          rgba(13, 27, 42, 0.35) 45%,
+          rgba(13, 27, 42, 0.9) 100%
+        );
+        color: #fff;
+      }
+
+      .banner-eyebrow {
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent-red-light);
+        margin-bottom: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .banner-eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 1.5px;
+        background: var(--accent-red-light);
+      }
+
+      .banner-title {
+        font-size: clamp(1.5rem, 4vw, 2.75rem);
+        font-weight: 700;
+        line-height: 1.12;
+        margin: 0 0 0.85rem;
+        max-width: 720px;
+        letter-spacing: -0.015em;
+      }
+
+      .banner-title em {
+        font-style: italic;
+        color: var(--accent-blue-light);
+      }
+
+      .banner-sub {
+        color: var(--text-soft);
+        font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+        max-width: 580px;
+        margin: 0;
+        line-height: 1.55;
+      }
+
+      /* Fallback: cuando la foto banner.jpg no existe aún */
+      .banner-frame.banner-fallback {
+        background:
+          radial-gradient(
+            ellipse at 25% 25%,
+            rgba(45, 107, 228, 0.28) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at 75% 75%,
+            rgba(139, 0, 0, 0.22) 0%,
+            transparent 55%
+          ),
+          linear-gradient(
+            135deg,
+            var(--bg-card) 0%,
+            var(--bg-secondary) 100%
+          );
+      }
+
+      .banner-frame.banner-fallback .banner-overlay {
+        background: linear-gradient(
+          180deg,
+          transparent 30%,
+          rgba(13, 27, 42, 0.6) 100%
+        );
+      }
+
+      @media (max-width: 768px) {
+        .banner-section {
+          margin: 3rem 0;
+        }
+        .banner-frame {
+          aspect-ratio: 4 / 5;
+        }
+        .banner-overlay {
+          padding: 1.5rem 1.25rem;
+        }
+        .banner-title {
+          font-size: 1.5rem;
+          line-height: 1.18;
+        }
+      }
+
+      /* ===== Instructor ===== */
+      .instructor-grid {
+        display: grid;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .instructor-grid {
+          grid-template-columns: 5fr 7fr;
+          gap: 3rem;
+        }
+      }
+
+      .instructor-photo {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2),
+          0 8px 24px rgba(0, 0, 0, 0.35);
+        background: linear-gradient(
+          135deg,
+          var(--bg-card) 0%,
+          var(--bg-secondary) 100%
+        );
+        aspect-ratio: 4 / 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .instructor-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .instructor-photo-fallback {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-muted);
+      }
+
+      .instructor-photo-fallback .initials {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        background: var(--accent-red);
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+      }
+
+      /* Caption sobre la foto del instructor (crédito Brad Schoenfeld) */
+      .instructor-photo-credit {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.25rem 1.15rem;
+        background: linear-gradient(
+          180deg,
+          rgba(13, 27, 42, 0) 0%,
+          rgba(13, 27, 42, 0.92) 65%
+        );
+        color: #fff;
+        font-size: 0.8125rem;
+        letter-spacing: 0.01em;
+        line-height: 1.45;
+      }
+
+      .instructor-photo-credit strong {
+        font-weight: 700;
+      }
+
+      .instructor-credentials {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--text-muted);
+        letter-spacing: 0.04em;
+      }
+
+      .instructor-text p {
+        color: var(--text-soft);
+        line-height: 1.7;
+        margin: 0 0 1rem;
+      }
+
+      .instructor-text strong {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .text-green-accent {
+        color: var(--success);
+        font-weight: 700;
+      }
+
+      .instructor-quote {
+        margin-top: 2rem;
+        padding: 0.5rem 0 0.5rem 1.25rem;
+        border-left: 3px solid var(--accent-red);
+      }
+
+      .instructor-quote p {
+        font-size: 1.0625rem;
+        font-style: italic;
+        color: #fff;
+        margin: 0;
+      }
+
+      .instructor-quote .signature {
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        font-style: normal;
+      }
+
+      /* ===== Pricing ===== */
+      .pricing-card {
+        background: linear-gradient(
+          135deg,
+          var(--bg-card) 0%,
+          var(--bg-secondary) 50%,
+          var(--bg-card) 100%
+        );
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .pricing-card::before {
+        content: "";
+        display: block;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--accent-red) 0%,
+          #a50000 50%,
+          var(--accent-red) 100%
+        );
+      }
+
+      .pricing-inner {
+        padding: 2.25rem 1.75rem;
+      }
+
+      @media (min-width: 768px) {
+        .pricing-inner {
+          padding: 3rem 2.5rem;
+        }
+      }
+
+      .pricing-grid {
+        display: grid;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      @media (min-width: 1024px) {
+        .pricing-grid {
+          grid-template-columns: 5fr 7fr;
+          gap: 3.5rem;
+        }
+      }
+
+      .pricing-amount {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+      }
+
+      .pricing-amount .figure {
+        font-size: 2.75rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #fff;
+      }
+
+      .pricing-amount .currency {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: var(--text-muted);
+      }
+
+      .pricing-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(139, 0, 0, 0.18);
+        border: 1px solid rgba(139, 0, 0, 0.45);
+        color: var(--accent-red-light);
+        padding: 0.3rem 0.75rem;
+        border-radius: var(--radius-pill);
+        font-size: 0.6875rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 1rem;
+      }
+
+      .pricing-sub {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        margin: 0.5rem 0 1.5rem;
+      }
+
+      .pricing-options {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .pricing-option {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.85rem;
+        padding: 1rem 1.15rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        transition: border-color 0.2s ease, background 0.2s ease;
+      }
+
+      .pricing-option:hover {
+        border-color: rgba(52, 211, 153, 0.5);
+        background: rgba(52, 211, 153, 0.04);
+      }
+
+      .pricing-option .check {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: rgba(52, 211, 153, 0.18);
+        color: var(--success);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+      }
+
+      .pricing-option .check svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .pricing-option .opt-title {
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        display: block;
+        margin-bottom: 0.15rem;
+      }
+
+      .pricing-option .opt-desc {
+        color: var(--text-muted);
+        font-size: 0.8125rem;
+      }
+
+      .methods-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+      }
+
+      .method-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+        color: var(--text-soft);
+        font-size: 0.75rem;
+        padding: 0.4rem 0.75rem;
+        border-radius: var(--radius-pill);
+        font-weight: 500;
+      }
+
+      .method-chip svg {
+        width: 14px;
+        height: 14px;
+        color: var(--text-muted);
+      }
+
+      .pricing-cta-block {
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      @media (min-width: 1024px) {
+        .pricing-cta-block {
+          text-align: left;
+        }
+      }
+
+      .pricing-cta-block .micro {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        margin-top: 0.75rem;
+      }
+
+      /* ===== Footer ===== */
+      footer {
+        background: #0a1628;
+        border-top: 1px solid var(--border);
+        padding: 2.5rem 0;
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      @media (min-width: 768px) {
+        .footer-inner {
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: left;
+        }
+      }
+
+      .footer-brand {
+        font-weight: 700;
+        font-size: 0.9375rem;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .footer-brand .footer-logo-img {
+        height: 44px;
+        width: auto;
+        max-width: 120px;
+        object-fit: contain;
+        opacity: 0.92;
+      }
+
+      .footer-brand .footer-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer-brand .footer-sub {
+        display: block;
+        color: var(--text-muted);
+        font-weight: 500;
+        font-size: 0.8125rem;
+        margin-top: 0.15rem;
+      }
+
+      .footer-meta {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      /* ===== Sticky WhatsApp Button ===== */
+      .wa-sticky {
+        position: fixed;
+        bottom: 1.25rem;
+        right: 1.25rem;
+        z-index: 50;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        background: var(--whatsapp);
+        color: #fff;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        padding: 0.85rem 1.15rem;
+        border-radius: var(--radius-pill);
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45),
+          0 2px 8px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease, box-shadow 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .wa-sticky:hover {
+        background: var(--whatsapp-hover);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 12px 32px rgba(37, 211, 102, 0.55),
+          0 4px 12px rgba(0, 0, 0, 0.35);
+      }
+
+      .wa-sticky svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      .wa-sticky .wa-text {
+        display: none;
+      }
+
+      @media (min-width: 480px) {
+        .wa-sticky .wa-text {
+          display: inline;
+        }
+      }
+
+      .wa-sticky::before {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: var(--radius-pill);
+        background: var(--whatsapp);
+        opacity: 0;
+        z-index: -1;
+        animation: waPulse 2.5s ease-in-out infinite;
+      }
+
+      @keyframes waPulse {
+        0% {
+          opacity: 0.55;
+          transform: scale(1);
+        }
+        70%,
+        100% {
+          opacity: 0;
+          transform: scale(1.35);
+        }
+      }
+
+      /* Reveal on scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .reveal.is-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Section header (centered) */
+      .section-head {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto 3rem;
+      }
+
+      .section-head h2 {
+        margin-bottom: 0.75rem;
+      }
+
+      .section-head p {
+        color: var(--text-muted);
+        font-size: 1.0625rem;
+        margin: 0;
+      }
+
+      .section-head .accent {
+        color: var(--accent-blue-light);
+      }
+
+      .section-head .accent-red {
+        color: var(--accent-red-soft);
+      }
+
+      /* Skip link a11y */
+      .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: #fff;
+        color: #0d1b2a;
+        padding: 0.5rem 1rem;
+        z-index: 100;
+        font-weight: 600;
+      }
+
+      .skip-link:focus {
+        top: 0;
+      }
+
+      /* =====================================================
+         MOBILE RESPONSIVE — full polish
+         ===================================================== */
+
+      /* Tablet → small mobile */
+      @media (max-width: 640px) {
+        .container {
+          padding: 0 1rem;
+        }
+
+        /* Section spacing */
+        .section-pad {
+          padding: 3rem 0;
+        }
+
+        /* Nav tightening */
+        .nav-inner {
+          padding: 0.6rem 1rem;
+          gap: 0.5rem;
+        }
+
+        .nav-cta {
+          padding: 0.5rem 0.85rem;
+          font-size: 0.8125rem;
+          gap: 0.4rem;
+        }
+
+        .nav-cta svg {
+          width: 14px;
+          height: 14px;
+        }
+
+        /* Hero */
+        .hero {
+          padding: 2.5rem 0 1.5rem;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        .hero .lead {
+          font-size: 0.9375rem;
+          margin-bottom: 2rem;
+        }
+
+        .hero-card {
+          padding: 1.25rem 1rem;
+        }
+
+        .hero-card .icon-circle {
+          width: 42px;
+          height: 42px;
+          margin-bottom: 0.75rem;
+        }
+
+        .hero-card .icon-circle svg {
+          width: 19px;
+          height: 19px;
+        }
+
+        .hero-cards {
+          margin-bottom: 2rem;
+        }
+
+        /* Hero CTA */
+        .btn-lg {
+          padding: 0.85rem 1.5rem;
+          font-size: 0.9375rem;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+          padding: 1.25rem 0;
+        }
+
+        .stats-grid {
+          gap: 0.5rem;
+        }
+
+        .stat-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          margin-bottom: 0.4rem;
+        }
+
+        .stats-grid .stat-label {
+          font-size: 0.6875rem;
+          line-height: 1.35;
+          padding: 0 0.15rem;
+        }
+
+        /* Headings inside sections */
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        .section-head {
+          margin-bottom: 2rem;
+        }
+
+        .section-head p {
+          font-size: 0.9375rem;
+        }
+
+        /* Brief side */
+        .brief-side {
+          padding: 1.25rem;
+        }
+
+        .brief-side li {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.2rem;
+          padding: 0.55rem 0;
+        }
+
+        .brief-side li .li-label {
+          min-width: 0;
+          font-size: 0.6875rem;
+        }
+
+        .brief-side li .li-value {
+          font-size: 0.9375rem;
+        }
+
+        /* Tabs (Sábado / Domingo) */
+        .tabs {
+          width: 100%;
+          padding: 0.2rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+          flex: 1;
+          justify-content: center;
+          font-size: 0.8125rem;
+          padding: 0.55rem 0.6rem;
+          gap: 0.4rem;
+        }
+
+        .tabs-meta {
+          font-size: 0.8125rem;
+          line-height: 1.5;
+        }
+
+        /* Module cards */
+        .module-card {
+          padding: 1rem 1rem 1.1rem;
+        }
+
+        .module-card h3 {
+          font-size: 1rem;
+        }
+
+        .module-card p {
+          font-size: 0.8125rem;
+        }
+
+        /* Fechas */
+        .fecha-card {
+          padding: 1.25rem 1rem;
+        }
+
+        .fecha-day {
+          font-size: 1.875rem;
+        }
+
+        .fecha-special-badge {
+          font-size: 0.6rem;
+          padding: 0.25rem 0.5rem;
+          letter-spacing: 0.08em;
+        }
+
+        .fecha-status {
+          font-size: 0.625rem;
+          padding: 0.22rem 0.55rem;
+          letter-spacing: 0.08em;
+        }
+
+        .fecha-price-chip {
+          padding: 0.5rem 0.65rem;
+          flex-wrap: wrap;
+        }
+
+        .fecha-price-chip .price-amount {
+          font-size: 0.9375rem;
+        }
+
+        .fecha-price-chip .price-note {
+          font-size: 0.625rem;
+          margin-left: 0;
+          width: 100%;
+          margin-top: 0.15rem;
+        }
+
+        /* Instructor */
+        .instructor-quote p {
+          font-size: 0.9375rem;
+        }
+
+        /* Pricing */
+        .pricing-inner {
+          padding: 1.75rem 1.25rem;
+        }
+
+        .pricing-amount .figure {
+          font-size: 2.25rem;
+        }
+
+        .pricing-grid {
+          gap: 1.5rem;
+        }
+
+        .pricing-option {
+          padding: 0.85rem 1rem;
+          gap: 0.65rem;
+        }
+
+        .pricing-option .opt-title {
+          font-size: 0.875rem;
+        }
+
+        .pricing-option .opt-desc {
+          font-size: 0.75rem;
+        }
+
+        .methods-row {
+          gap: 0.4rem;
+        }
+
+        .method-chip {
+          font-size: 0.6875rem;
+          padding: 0.35rem 0.65rem;
+        }
+
+        /* Footer */
+        footer {
+          padding: 2rem 0;
+          padding-bottom: 5rem; /* room for sticky WA */
+        }
+
+        .footer-brand {
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+          text-align: center;
+        }
+
+        .footer-brand .footer-text {
+          align-items: center;
+        }
+
+        /* Sticky WA */
+        .wa-sticky {
+          bottom: 1rem;
+          right: 1rem;
+          padding: 0.75rem 1rem;
+          font-size: 0.875rem;
+        }
+
+        .wa-sticky svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        /* Body padding-bottom so the sticky WA never covers the last CTA */
+        body {
+          padding-bottom: 0;
+        }
+      }
+
+      /* Very small phones (iPhone SE, ≤360px) */
+      @media (max-width: 360px) {
+        h1 {
+          font-size: 1.625rem;
+        }
+
+        h2 {
+          font-size: 1.3125rem;
+        }
+
+        .hero .lead {
+          font-size: 0.875rem;
+        }
+
+        .hero-card {
+          padding: 1rem 0.85rem;
+        }
+
+        .stat-icon {
+          width: 38px;
+          height: 38px;
+          border-radius: 10px;
+        }
+
+        .stats-grid .stat-label {
+          font-size: 0.625rem;
+        }
+
+        .nav-inner {
+          padding: 0.5rem 0.85rem;
+        }
+
+        .nav-cta {
+          padding: 0.42rem 0.7rem;
+          font-size: 0.75rem;
+        }
+
+        .nav-cta svg {
+          width: 13px;
+          height: 13px;
+        }
+
+        .nav-brand .nav-logo-img {
+          height: 38px;
+        }
+
+        /* Sticky WA → just the icon, no text */
+        .wa-sticky .wa-text {
+          display: none;
+        }
+
+        .wa-sticky {
+          padding: 0.75rem;
+          width: 52px;
+          height: 52px;
+          justify-content: center;
+        }
+
+        .fecha-card {
+          padding: 1.1rem 0.9rem;
+        }
+
+        .pricing-inner {
+          padding: 1.5rem 1rem;
+        }
+
+        .pricing-amount .figure {
+          font-size: 2rem;
+        }
+
+        /* Avoid horizontal overflow from long words */
+        .module-card h3,
+        .pricing-option .opt-title,
+        .fecha-meta-row span {
+          overflow-wrap: anywhere;
+        }
+      }
+
+      /* Hover hint cleanup on touch devices — avoid sticky :hover state */
+      @media (hover: none) {
+        .hero-card:hover,
+        .module-card:hover,
+        .fecha-card:not([data-status="agotado"]):hover {
+          transform: none;
+        }
+      }
+
+      /* Reduce motion — respect user preference */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#contenidos" class="skip-link">Saltar al contenido</a>
+
+    <!-- ============ NAV ============ -->
+    <nav class="nav" aria-label="Navegación principal">
+      <div class="nav-inner">
+        <div class="nav-brand">
+          <img
+            src="assets/images/academy-logo.png"
+            alt="Academy by Physica"
+            class="nav-logo-img"
+          />
+          <span class="nav-tagline">Cursos presenciales</span>
+        </div>
+        <a
+          href="https://wa.me/56966020493?text=Hola!%20Quiero%20m%C3%A1s%20info%20del%20curso%20Biomec%C3%A1nica%2C%20Anatom%C3%ADa%20y%20Ejecuci%C3%B3n."
+          target="_blank"
+          rel="noopener"
+          class="nav-cta"
+          aria-label="Consultar por WhatsApp"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+            />
+          </svg>
+          Inscríbete
+        </a>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container">
+        <p class="hero-eyebrow">CURSO PRESENCIAL · ACADEMY BY PHYSICA</p>
+        <h1>
+          Biomecánica, Anatomía
+          <br />
+          y <span class="text-shimmer">Ejecución</span>
+        </h1>
+        <p class="lead">
+          Reconstruye tu técnica desde la teoría — y tu teoría desde la
+          técnica. Sábado: el marco que respalda cada decisión clínica.
+          Domingo: los siete patrones fundamentales bajo la barra,
+          corregidos en vivo. Un fin de semana, el rigor técnico que tus
+          clientes notan en la primera semana.
+        </p>
+
+        <div class="hero-cards">
+          <article class="hero-card">
+            <div class="icon-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"
+                ></path>
+                <path
+                  d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"
+                ></path>
+              </svg>
+            </div>
+            <h3>Principios, no reglas</h3>
+            <p>
+              Un marco para decidir cargas, rangos y selección a partir de
+              los principios biomecánicos — no recetas que se quiebran frente
+              al cliente que no encaja en el libro.
+            </p>
+          </article>
+
+          <article class="hero-card">
+            <div class="icon-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </div>
+            <h3>Ejecución basada en la persona</h3>
+            <p>
+              Ejecutaremos cada ejercicio en grupo reducido para que recibas
+              las correcciones e instrucciones que más te sirven con el
+              cliente que tienes hoy en día.
+            </p>
+          </article>
+
+          <article class="hero-card">
+            <div class="icon-circle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"></path>
+              </svg>
+            </div>
+            <h3>Diferenciación profesional</h3>
+            <p>
+              La conversación técnica que tus clientes notan a la primera
+              semana — y que te separa del entrenador promedio.
+            </p>
+          </article>
+        </div>
+
+        <a
+          href="#fechas"
+          class="btn btn-red btn-lg"
+          aria-label="Ver próximas fechas y cupos"
+        >
+          Ver próximas fechas
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ STATS BAR ============ -->
+    <section class="stats-bar" aria-label="Resumen del curso">
+      <div class="container">
+        <div class="stats-grid">
+          <div>
+            <div class="stat-icon blue" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="10" width="36" height="32" rx="3"></rect>
+                <line x1="6" y1="20" x2="42" y2="20"></line>
+                <line x1="14" y1="6" x2="14" y2="14"></line>
+                <line x1="34" y1="6" x2="34" y2="14"></line>
+                <rect x="13" y="26" width="9" height="9" rx="1.5" fill="currentColor" stroke="none" opacity="0.95"></rect>
+                <rect x="26" y="26" width="9" height="9" rx="1.5" fill="currentColor" stroke="none" opacity="0.95"></rect>
+              </svg>
+            </div>
+            <div class="stat-label">Sábado + Domingo intensivo</div>
+          </div>
+          <div>
+            <div class="stat-icon red" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M24 4c-7.732 0-14 6.268-14 14 0 10.5 14 26 14 26s14-15.5 14-26c0-7.732-6.268-14-14-14z"></path>
+                <circle cx="24" cy="18" r="5" fill="currentColor" stroke="none"></circle>
+              </svg>
+            </div>
+            <div class="stat-label">100% presencial · cupos limitados</div>
+          </div>
+          <div>
+            <div class="stat-icon green" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="24" cy="14" r="5"></circle>
+                <path d="M14 38c0-5.523 4.477-10 10-10s10 4.477 10 10"></path>
+                <circle cx="10" cy="18" r="3.5"></circle>
+                <path d="M3 38c0-3.5 2.2-6.4 7-7"></path>
+                <circle cx="38" cy="18" r="3.5"></circle>
+                <path d="M45 38c0-3.5-2.2-6.4-7-7"></path>
+              </svg>
+            </div>
+            <div class="stat-label">Cuerpo docente con experiencia práctica</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BRIEF ============ -->
+    <section class="section-pad" aria-labelledby="brief-title">
+      <div class="container">
+        <div class="brief-grid reveal">
+          <div class="brief-text">
+            <div class="eyebrow-pill">
+              <span class="dot"></span>
+              <span class="label">De qué se trata</span>
+            </div>
+            <h2 id="brief-title">
+              Un fin de semana para
+              <br />
+              <span style="color: var(--accent-blue-light)"
+                >cerrar la brecha entre saber y aplicar.</span
+              >
+            </h2>
+            <p>
+              Este curso es el puente que faltaba entre la teoría aplicada y
+              el cliente real.
+              <strong
+                >Dos días donde repasamos a fondo la biomecánica y la anatomía
+                funcional que sostienen cada decisión técnica</strong
+              >
+              al programar, y luego bajamos todo ese marco al piso del
+              gimnasio — un patrón a la vez, contigo bajo la barra.
+            </p>
+            <p>
+              El sábado construimos el sistema: matriz de selección de
+              ejercicios, anatomía funcional grupo por grupo, programación de
+              fuerza y revisión crítica de la evidencia que respalda — o tira
+              abajo — lo que circula en redes.
+            </p>
+            <p>
+              El domingo aterrizamos todo en el gimnasio. Lunges, squats,
+              presses, pulls, hinges, bridges, hip extension. Cada patrón
+              ejecutado, corregido y discutido en vivo —
+              <strong>en un grupo reducido de máximo doce personas que
+              permite claridad en cada explicación.</strong>
+            </p>
+          </div>
+
+          <aside class="brief-side">
+            <h4>Itinerario</h4>
+            <ul>
+              <li>
+                <span class="li-label">Formato</span>
+                <span class="li-value">Presencial · grupo reducido (máx. 12 personas)</span>
+              </li>
+              <li>
+                <span class="li-label">Duración</span>
+                <span class="li-value">Sábado 13:00–20:00 · Domingo 12:00–18:30</span>
+              </li>
+              <li>
+                <span class="li-label">Sede</span>
+                <span class="li-value">Physica · Av. Vitacura 3565, local 103</span>
+              </li>
+              <li>
+                <span class="li-label">Dirige</span>
+                <span class="li-value">André Bravo · CSCS · CFSC · CISSN</span>
+              </li>
+              <li>
+                <span class="li-label">Para quién</span>
+                <span class="li-value">Entrenadores, kinesiólogos y profesionales del movimiento</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTENIDOS ============ -->
+    <section
+      id="contenidos"
+      class="section-pad"
+      aria-labelledby="contenidos-title"
+      style="background: radial-gradient(ellipse at 50% 0%, rgba(45,107,228,0.05) 0%, transparent 60%);"
+    >
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow-pill is-blue" style="margin: 0 auto 1rem;">
+            <span class="dot"></span>
+            <span class="label">Contenidos del curso</span>
+          </div>
+          <h2 id="contenidos-title">
+            Dos días.
+            <br />
+            <span class="accent">Teoría aplicada e integración práctica.</span>
+          </h2>
+          <p>
+            Cada bloque tiene un orden — el del razonamiento clínico aplicado
+            al ejercicio. Sin saltos, sin huecos.
+          </p>
+        </div>
+
+        <div style="text-align: center;" class="reveal">
+          <div class="tabs" role="tablist" aria-label="Días del curso">
+            <button
+              type="button"
+              class="tab-btn"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-sabado"
+              id="tab-sabado"
+              data-target="panel-sabado"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              Sábado · Teórico
+            </button>
+            <button
+              type="button"
+              class="tab-btn"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-domingo"
+              id="tab-domingo"
+              data-target="panel-domingo"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m6.5 6.5 11 11"></path>
+                <path d="m21 21-1-1"></path>
+                <path d="m3 3 1 1"></path>
+                <path d="m18 22 4-4"></path>
+                <path d="m2 6 4-4"></path>
+                <path d="m3 10 7-7"></path>
+                <path d="m14 21 7-7"></path>
+              </svg>
+              Domingo · Práctico
+            </button>
+          </div>
+
+          <p class="tabs-meta">
+            <strong>Sábado:</strong> 13:00 — 20:00 hrs · 12 bloques teóricos
+            &nbsp;·&nbsp;
+            <strong>Domingo:</strong> 12:00 — 18:30 hrs · 7 patrones ejecutados
+          </p>
+        </div>
+
+        <!-- ===== PANEL SÁBADO ===== -->
+        <div
+          id="panel-sabado"
+          class="tab-panel is-active"
+          role="tabpanel"
+          aria-labelledby="tab-sabado"
+        >
+          <div class="module-grid">
+            <article class="module-card">
+              <span class="num">01 · Bases</span>
+              <h3>Revisión Biomecánica y Bases del Movimiento</h3>
+              <p>
+                Planos, ejes, palancas. El lenguaje técnico que tienes que
+                dominar para no improvisar al programar.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">02 · Bases</span>
+              <h3>Matriz de la Selección de Ejercicios</h3>
+              <p>
+                El sistema con el que decides qué ejercicio es el correcto para
+                este cliente, ahora — no en abstracto.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">03 · Anatomía</span>
+              <h3>Anatomía Funcional · Glúteos</h3>
+              <p>
+                Mayor, medio, menor. División ilíaca y sacra. Función real
+                según rango de cadera y tarea motora.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">04 · Anatomía</span>
+              <h3>Anatomía Funcional · Isquiosurales</h3>
+              <p>
+                Biarticulares y su rol en cadera vs rodilla. Por qué se rompen
+                cuando se programan mal.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">05 · Anatomía</span>
+              <h3>Anatomía Funcional · Cuádriceps</h3>
+              <p>
+                Vastos, recto femoral y comportamiento articular según
+                profundidad y posición de tronco.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">06 · Anatomía</span>
+              <h3>Anatomía Funcional · Deltoides</h3>
+              <p>
+                Anterior, medio, posterior. Cómo seleccionar el ejercicio según
+                la porción que estás priorizando.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">07 · Anatomía</span>
+              <h3>Anatomía Funcional · Bíceps</h3>
+              <p>
+                Cabeza larga vs corta. Posición de hombro y rotación del
+                antebrazo como variables de selección.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">08 · Anatomía</span>
+              <h3>Anatomía Funcional · Tríceps</h3>
+              <p>
+                Cabeza larga, lateral, medial. Por qué la posición del codo
+                cambia todo lo que crees saber del press.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">09 · Anatomía</span>
+              <h3>Anatomía Funcional · Pectoral</h3>
+              <p>
+                Mayor y menor. Ángulo de banco, recorrido y la diferencia
+                entre activar y crecer.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">10 · Anatomía</span>
+              <h3>Anatomía Funcional · Dorsal Ancho</h3>
+              <p>
+                Origen, inserción y comportamiento durante pulls verticales y
+                horizontales. Lectura aplicada al gesto.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">11 · Programación</span>
+              <h3>Programación para el Entrenamiento de Fuerza</h3>
+              <p>
+                Microciclo, mesociclo, manejo de volumen e intensidad para
+                clientes reales — no atletas pro de Instagram.
+              </p>
+            </article>
+
+            <article class="module-card">
+              <span class="num">12 · Cierre</span>
+              <h3>Revisión de la Evidencia Científica</h3>
+              <p>
+                Qué dice la ciencia hoy, qué se exagera, qué se ignora.
+                Lectura crítica para que tomes mejores decisiones.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- ===== PANEL DOMINGO ===== -->
+        <div
+          id="panel-domingo"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-domingo"
+          hidden
+        >
+          <div class="module-grid">
+            <article class="module-card practice">
+              <span class="icon-tag">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6.5 6.5 17.5 17.5"></path>
+                  <path d="M21 21l-1-1"></path>
+                  <path d="M3 3l1 1"></path>
+                </svg>
+                Práctico
+              </span>
+              <h3>Lunges</h3>
+              <p>
+                Estocadas, walking, reverse y deficit. Lectura de cadera,
+                rodilla y pie. Cuándo usar cada variante.
+              </p>
+            </article>
+
+            <article class="module-card practice">
+              <span class="icon-tag">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6.5 6.5 17.5 17.5"></path>
+                  <path d="M21 21l-1-1"></path>
+                  <path d="M3 3l1 1"></path>
+                </svg>
+                Práctico
+              </span>
+              <h3>Squats</h3>
+              <p>
+                Back, front, goblet, hack. Profundidad, ángulo de tronco,
+                relación cadera–rodilla–tobillo aplicada al cliente.
+              </p>
+            </article>
+
+            <article class="module-card practice">
+              <span class="icon-tag">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6.5 6.5 17.5 17.5"></path>
+                  <path d="M21 21l-1-1"></path>
+                  <path d="M3 3l1 1"></path>
+                </svg>
+                Práctico
+              </span>
+              <h3>Presses</h3>
+              <p>
+                Press banca, inclinado, militar. Trayectoria de barra, ángulo
+                de codo y selección según porción del pectoral o deltoides.
+              </p>
+            </article>
+
+            <article class="module-card practice">
+              <span class="icon-tag">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6.5 6.5 17.5 17.5"></path>
+                  <path d="M21 21l-1-1"></path>
+                  <path d="M3 3l1 1"></path>
+                </svg>
+                Práctico
+              </span>
+              <h3>Pulls</h3>
+              <p>
+                Verticales y horizontales. Dominadas, remos, jalones. Qué
+                miras, qué corriges, qué dejas pasar.
+              </p>
+            </article>
+
+            <article class="module-card practice">
+              <span class="icon-tag">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6.5 6.5 17.5 17.5"></path>
+                  <path d="M21 21l-1-1"></path>
+                  <path d="M3 3l1 1"></path>
+                </svg>
+                Práctico
+              </span>
+              <h3>Hinge</h3>
+              <p>
+                Peso muerto convencional, sumo, rumano. Bisagra de cadera real
+                — y por qué la mayoría la programa mal.
+              </p>
+            </article>
+
+            <article class="module-card practice">
+              <span class="icon-tag">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6.5 6.5 17.5 17.5"></path>
+                  <path d="M21 21l-1-1"></path>
+                  <path d="M3 3l1 1"></path>
+                </svg>
+                Práctico
+              </span>
+              <h3>Bridges</h3>
+              <p>
+                Hip thrust y glute bridge. Set up, posición de pelvis, rango
+                útil real para crecimiento del glúteo.
+              </p>
+            </article>
+
+            <article class="module-card practice">
+              <span class="icon-tag">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6.5 6.5 17.5 17.5"></path>
+                  <path d="M21 21l-1-1"></path>
+                  <path d="M3 3l1 1"></path>
+                </svg>
+                Práctico
+              </span>
+              <h3>Hip Extension</h3>
+              <p>
+                Back extension, 45°, GHR. Diferenciar hinge de extensión de
+                cadera y cuándo usar cada estímulo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BANNER ============ -->
+    <section class="banner-section reveal" aria-label="El práctico del domingo">
+      <div class="banner-frame">
+        <img
+          src="assets/images/banner.jpg"
+          alt="Sesión práctica del curso en el piso del gimnasio"
+          class="banner-img"
+          loading="lazy"
+          onerror="this.style.display='none';this.parentElement.classList.add('banner-fallback');"
+        />
+        <div class="banner-overlay">
+          <span class="banner-eyebrow">El domingo</span>
+          <h2 class="banner-title">
+            El piso del gimnasio es donde
+            <em>se nota la diferencia.</em>
+          </h2>
+          <p class="banner-sub">
+            Cada patrón ejecutado, corregido y discutido en vivo —
+            en grupos de máximo doce personas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FECHAS ============ -->
+    <section
+      id="fechas"
+      class="section-pad"
+      aria-labelledby="fechas-title"
+    >
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow-pill is-green" style="margin: 0 auto 1rem;">
+            <span class="dot"></span>
+            <span class="label">Próximas fechas</span>
+          </div>
+          <h2 id="fechas-title">
+            Cupos limitados,
+            <br />
+            <span class="accent-red">grupo reducido por edición.</span>
+          </h2>
+          <p>
+            Cada edición tiene cupos limitados para mantener la calidad del
+            práctico. Reserva por WhatsApp para asegurar tu lugar.
+          </p>
+        </div>
+
+        <div class="fechas-grid reveal">
+          <!--
+            ============================================================
+            EDITAR FECHAS:
+            - data-status: "disponible" | "pocos" | "agotado"
+            - data-cupos-disponibles / data-cupos-total: actualiza los números
+            - El badge superior y el texto de cupos se renderizan via JS
+              al cargar (initFechas), así que solo cambias los data-attrs.
+            ============================================================
+          -->
+
+          <article
+            class="fecha-card"
+            data-status="auto"
+            data-cupos-disponibles="2"
+            data-cupos-total="12"
+            data-fecha="9 y 10 de mayo"
+            data-event-date="2026-05-09"
+            data-price="$230.000 CLP"
+          >
+            <div>
+              <div class="fecha-month">Mayo · Sábado y domingo</div>
+              <div class="fecha-day">09 — 10</div>
+              <div class="fecha-year">2026</div>
+            </div>
+            <div class="fecha-meta">
+              <div class="fecha-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Physica · Av. Vitacura 3565, local 103</span>
+              </div>
+              <div class="fecha-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Sáb 13:00–20:00 · Dom 12:00–18:30</span>
+              </div>
+              <div class="fecha-price-chip">
+                <span class="price-amount">$230.000</span>
+                <span class="price-currency">CLP</span>
+              </div>
+              <div class="fecha-cupos">
+                <strong class="js-cupos-num"></strong>
+                <span class="js-cupos-text"></span>
+              </div>
+              <div class="fecha-progress" aria-hidden="true">
+                <div class="fecha-progress-fill js-progress-fill" style="width: 0%;"></div>
+              </div>
+              <div class="fecha-countdown js-countdown"></div>
+            </div>
+            <a
+              class="btn btn-whatsapp js-fecha-cta"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span class="js-cta-label">Reservar lugar</span>
+            </a>
+          </article>
+
+          <article
+            class="fecha-card is-special"
+            data-status="auto"
+            data-cupos-disponibles="10"
+            data-cupos-total="10"
+            data-fecha="2 y 3 de octubre · Puerto Varas"
+            data-event-date="2026-10-02"
+            data-price="$120.000 CLP"
+          >
+            <div class="fecha-flag-row">
+              <span class="fecha-flag" role="img" aria-label="Bandera de Chile">
+                <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="30" height="10" fill="#FFFFFF"/>
+                  <rect y="10" width="30" height="10" fill="#D52B1E"/>
+                  <rect width="10" height="10" fill="#0039A6"/>
+                  <polygon points="5,2.7 5.7,4.7 7.8,4.7 6.1,5.9 6.7,8 5,6.7 3.3,8 3.9,5.9 2.2,4.7 4.3,4.7" fill="#FFFFFF"/>
+                </svg>
+              </span>
+              <span class="fecha-special-badge">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 .5l1.7 5.3h5.6l-4.5 3.3 1.7 5.3L8 11.1l-4.5 3.3 1.7-5.3L.7 5.8h5.6L8 .5z"/>
+                </svg>
+                Edición especial · Chile
+              </span>
+            </div>
+            <div>
+              <div class="fecha-month">Octubre · Sábado y domingo</div>
+              <div class="fecha-day">02 — 03</div>
+              <div class="fecha-year">2026</div>
+            </div>
+            <div class="fecha-meta">
+              <div class="fecha-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Puerto Varas · Gimnasio Epic</span>
+              </div>
+              <div class="fecha-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Sáb 13:00–20:00 · Dom 12:00–18:30</span>
+              </div>
+              <div class="fecha-price-chip">
+                <span class="price-amount">$120.000</span>
+                <span class="price-currency">CLP</span>
+                <span class="price-note">Precio especial</span>
+              </div>
+              <div class="fecha-cupos">
+                <strong class="js-cupos-num"></strong>
+                <span class="js-cupos-text"></span>
+              </div>
+              <div class="fecha-progress" aria-hidden="true">
+                <div class="fecha-progress-fill js-progress-fill" style="width: 0%;"></div>
+              </div>
+              <div class="fecha-countdown js-countdown"></div>
+            </div>
+            <a
+              class="btn btn-whatsapp js-fecha-cta"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span class="js-cta-label">Reservar lugar</span>
+            </a>
+          </article>
+
+          <article
+            class="fecha-card"
+            data-status="auto"
+            data-cupos-disponibles="6"
+            data-cupos-total="12"
+            data-fecha="10 y 11 de octubre"
+            data-event-date="2026-10-10"
+            data-price="$230.000 CLP"
+          >
+            <div>
+              <div class="fecha-month">Octubre · Sábado y domingo</div>
+              <div class="fecha-day">10 — 11</div>
+              <div class="fecha-year">2026</div>
+            </div>
+            <div class="fecha-meta">
+              <div class="fecha-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Physica · Av. Vitacura 3565, local 103</span>
+              </div>
+              <div class="fecha-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Sáb 13:00–20:00 · Dom 12:00–18:30</span>
+              </div>
+              <div class="fecha-price-chip">
+                <span class="price-amount">$230.000</span>
+                <span class="price-currency">CLP</span>
+              </div>
+              <div class="fecha-cupos">
+                <strong class="js-cupos-num"></strong>
+                <span class="js-cupos-text"></span>
+              </div>
+              <div class="fecha-progress" aria-hidden="true">
+                <div class="fecha-progress-fill js-progress-fill" style="width: 0%;"></div>
+              </div>
+              <div class="fecha-countdown js-countdown"></div>
+            </div>
+            <a
+              class="btn btn-whatsapp js-fecha-cta"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span class="js-cta-label">Reservar lugar</span>
+            </a>
+          </article>
+
+          <article
+            class="fecha-card is-special"
+            data-status="auto"
+            data-cupos-disponibles="18"
+            data-cupos-total="30"
+            data-fecha="14 y 15 de noviembre · Buenos Aires"
+            data-event-date="2026-11-14"
+            data-price="USD $200"
+          >
+            <div class="fecha-flag-row">
+              <span class="fecha-flag" role="img" aria-label="Bandera de Argentina">
+                <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="30" height="6.67" fill="#74ACDF"/>
+                  <rect y="6.67" width="30" height="6.67" fill="#FFFFFF"/>
+                  <rect y="13.33" width="30" height="6.67" fill="#74ACDF"/>
+                  <circle cx="15" cy="10" r="2.2" fill="#FCBF49" stroke="#85340A" stroke-width="0.2"/>
+                </svg>
+              </span>
+              <span class="fecha-special-badge">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="8" cy="8" r="7"/>
+                  <path d="M1 8h14"/>
+                  <path d="M8 1c2 2.2 3 4.5 3 7s-1 4.8-3 7c-2-2.2-3-4.5-3-7s1-4.8 3-7z"/>
+                </svg>
+                Edición internacional · Argentina
+              </span>
+            </div>
+            <div>
+              <div class="fecha-month">Noviembre · Sábado y domingo</div>
+              <div class="fecha-day">14 — 15</div>
+              <div class="fecha-year">2026</div>
+            </div>
+            <div class="fecha-meta">
+              <div class="fecha-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Buenos Aires · junto a Level Fit</span>
+              </div>
+              <div class="fecha-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Sáb 13:00–20:00 · Dom 12:00–18:30</span>
+              </div>
+              <div class="fecha-price-chip">
+                <span class="price-amount">USD $200</span>
+                <span class="price-note">Preventa · cupos limitados</span>
+              </div>
+              <div class="fecha-cupos">
+                <strong class="js-cupos-num"></strong>
+                <span class="js-cupos-text"></span>
+              </div>
+              <div class="fecha-progress" aria-hidden="true">
+                <div class="fecha-progress-fill js-progress-fill" style="width: 0%;"></div>
+              </div>
+              <div class="fecha-countdown js-countdown"></div>
+            </div>
+            <a
+              class="btn btn-whatsapp js-fecha-cta"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span class="js-cta-label">Reservar lugar</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSTRUCTOR ============ -->
+    <section class="section-pad" aria-labelledby="instructor-title">
+      <div class="container">
+        <div class="instructor-grid reveal">
+          <div>
+            <div class="instructor-photo">
+              <img
+                src="assets/images/instructor.jpg"
+                alt="André Bravo junto a Brad Schoenfeld, PhD — referente mundial en investigación de hipertrofia"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';this.parentElement.querySelector('.instructor-photo-credit')?.style.setProperty('display','none');"
+              />
+              <div class="instructor-photo-fallback" style="display: none;">
+                <div class="initials">AB</div>
+                <div>André Bravo</div>
+              </div>
+              <div class="instructor-photo-credit">
+                Junto a <strong>Brad Schoenfeld, PhD</strong> — referente
+                mundial en investigación de hipertrofia.
+              </div>
+            </div>
+            <p class="instructor-credentials">
+              Kinesiólogo · CSCS · RTSm · CFSC · CISSN
+            </p>
+          </div>
+
+          <div class="instructor-text">
+            <div class="eyebrow-pill">
+              <span class="dot"></span>
+              <span class="label">Quién dicta el curso</span>
+            </div>
+            <h2 id="instructor-title">
+              André Bravo.
+              <br />
+              <span style="color: var(--accent-blue-light)">
+                Kinesiólogo. Fundador de Physica.
+              </span>
+            </h2>
+
+            <p>
+              Más de <strong>10 años</strong> trabajando con clientes y
+              formando entrenadores. Las credenciales arriba existen, pero solo
+              importan si la práctica respalda — y mi metodología parte de ahí:
+              <strong
+                >cada decisión técnica empieza por entender qué pasa en la
+                articulación y en el músculo del cliente que tienes adelante.</strong
+              >
+            </p>
+            <p>
+              En Physica recibo todas las semanas postulaciones de entrenadores
+              que quieren sumarse al equipo. Conozco exactamente qué nivel se
+              necesita para estar a la altura del cliente exigente — y dónde
+              está la brecha que deja afuera a la mayoría.
+            </p>
+            <p>
+              Este curso es lo que me hubiera gustado tener cuando empecé: el
+              puente entre la ciencia del entrenamiento y la decisión clínica
+              que tomas cada vez que un cliente entra al gimnasio.
+              <strong
+                >Y no lo dicto solo: me acompaña el
+                <span class="text-green-accent">cuerpo docente</span> de
+                Physica — profesionales con experiencia práctica</strong
+              >
+              durante todo el práctico del domingo, para que la corrección
+              ocurra en un grupo reducido de máximo doce personas y nadie se
+              vaya sin haber ejecutado bien cada patrón.
+            </p>
+
+            <div class="instructor-quote">
+              <p>
+                Mi objetivo es dejar la industria mejor de lo que la encontré.
+                Si vas a invertir tiempo y dinero en formarte, hagámoslo bien.
+              </p>
+              <p class="signature">— André</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRECIO ============ -->
+    <section
+      id="precio"
+      class="section-pad"
+      aria-labelledby="precio-title"
+      style="padding-bottom: 6rem;"
+    >
+      <div class="container">
+        <div class="pricing-card reveal">
+          <div class="pricing-inner">
+            <div class="pricing-grid">
+              <!-- Lado izquierdo: precio + tag + CTA -->
+              <div>
+                <span class="pricing-tag">Inversión del curso</span>
+                <div class="pricing-amount">
+                  <span class="figure">$230.000</span>
+                  <span class="currency">CLP</span>
+                </div>
+                <p class="pricing-sub">
+                  Incluye los 2 días, material teórico-práctico y coffee break.
+                  <br />
+                  <span style="color: var(--accent-blue-light); font-weight: 600;">
+                    Ediciones especiales (Puerto Varas, Buenos Aires) tienen valor diferenciado — ver fechas.
+                  </span>
+                </p>
+                <div class="methods-row" aria-label="Métodos de pago aceptados">
+                  <span class="method-chip">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                    Tarjeta crédito
+                  </span>
+                  <span class="method-chip">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                    Débito
+                  </span>
+                  <span class="method-chip">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h6"/></svg>
+                    Transferencia
+                  </span>
+                </div>
+
+                <div class="pricing-cta-block">
+                  <a
+                    href="https://wa.me/56966020493?text=Hola!%20Quiero%20inscribirme%20en%20el%20curso%20Biomec%C3%A1nica%2C%20Anatom%C3%ADa%20y%20Ejecuci%C3%B3n.%20Me%20interesa%20coordinar%20la%20forma%20de%20pago."
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn-whatsapp btn-lg"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    Coordinar pago por WhatsApp
+                  </a>
+                  <p class="micro">
+                    Te respondemos en horario hábil. Reserva tu lugar antes de
+                    que se llene.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Lado derecho: opciones de pago -->
+              <div>
+                <h3 style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--success-light); margin: 0 0 1rem;">
+                  Opciones de pago
+                </h3>
+
+                <div class="pricing-options">
+                  <div class="pricing-option">
+                    <span class="check">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    <div>
+                      <span class="opt-title">Pago total al momento de reservar</span>
+                      <span class="opt-desc">$230.000 CLP de una vez · método más simple</span>
+                    </div>
+                  </div>
+
+                  <div class="pricing-option">
+                    <span class="check">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    <div>
+                      <span class="opt-title">50% para reservar + 50% antes del curso</span>
+                      <span class="opt-desc">$115.000 al reservar, $115.000 hasta 5 días antes del evento</span>
+                    </div>
+                  </div>
+
+                  <div class="pricing-option">
+                    <span class="check">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    <div>
+                      <span class="opt-title">Hasta 6 cuotas sin interés</span>
+                      <span class="opt-desc">Con tarjeta de crédito · desde $38.333 CLP / mes</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <img
+              src="assets/images/academy-logo.png"
+              alt="Academy by Physica"
+              class="footer-logo-img"
+            />
+            <span class="footer-text">
+              Academy by Physica
+              <span class="footer-sub">Biomecánica, Anatomía y Ejecución · Curso presencial</span>
+            </span>
+          </div>
+          <p class="footer-meta">
+            &copy; <span id="js-year"></span> Physica. Todos los derechos
+            reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ============ STICKY WHATSAPP ============ -->
+    <a
+      class="wa-sticky"
+      href="https://wa.me/56966020493?text=Hola!%20Quiero%20m%C3%A1s%20info%20del%20curso%20Biomec%C3%A1nica%2C%20Anatom%C3%ADa%20y%20Ejecuci%C3%B3n."
+      target="_blank"
+      rel="noopener"
+      aria-label="Consultar por WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+        />
+      </svg>
+      <span class="wa-text">Consultar</span>
+    </a>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script>
+      (function () {
+        "use strict";
+
+        const WHATSAPP = "56966020493";
+        const COURSE = "Biomecánica, Anatomía y Ejecución";
+
+        // ===== Año footer =====
+        const yearEl = document.getElementById("js-year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // ===== Tabs Sábado / Domingo =====
+        const tabBtns = document.querySelectorAll("[role=tab]");
+        tabBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const target = btn.getAttribute("data-target");
+            tabBtns.forEach((b) => {
+              const isActive = b === btn;
+              b.setAttribute("aria-selected", isActive ? "true" : "false");
+            });
+            document.querySelectorAll(".tab-panel").forEach((p) => {
+              const isActive = p.id === target;
+              p.classList.toggle("is-active", isActive);
+              p.toggleAttribute("hidden", !isActive);
+            });
+          });
+        });
+
+        // ===== Fecha cards: status inteligente + countdown + CTA =====
+        // Lógica: si data-status === "auto", computa el badge según
+        // ratio de cupos + proximidad de la fecha.
+        // Si pones data-status manual ("disponible" | "pocos" | "agotado")
+        // se respeta y no se sobrescribe.
+
+        const STATUS_LABELS = {
+          disponible: "Cupos disponibles",
+          pocos: "Últimos cupos",
+          agotado: "Agotado",
+        };
+
+        function resolveStatus(cuposDisp, total, daysUntil) {
+          if (cuposDisp <= 0) return "agotado";
+          if (total <= 0) return "disponible";
+          const ratio = cuposDisp / total;
+          // Reglas de FOMO inteligente
+          if (ratio <= 0.25) return "pocos";
+          if (ratio <= 0.5 && daysUntil <= 45) return "pocos";
+          if (daysUntil >= 0 && daysUntil <= 10 && ratio <= 0.75) return "pocos";
+          return "disponible";
+        }
+
+        function formatCountdown(daysUntil) {
+          if (daysUntil < 0) return { text: "Edición pasada", level: "" };
+          if (daysUntil === 0) return { text: "Es hoy", level: "is-imminent" };
+          if (daysUntil === 1)
+            return { text: "Faltan 24 horas", level: "is-imminent" };
+          if (daysUntil <= 7)
+            return {
+              text: "Faltan " + daysUntil + " días",
+              level: "is-imminent",
+            };
+          if (daysUntil <= 30)
+            return {
+              text: "Faltan " + daysUntil + " días",
+              level: "is-urgent",
+            };
+          if (daysUntil <= 60) {
+            const weeks = Math.round(daysUntil / 7);
+            return {
+              text: "Faltan ~" + weeks + " semanas",
+              level: "is-urgent",
+            };
+          }
+          const months = Math.round(daysUntil / 30);
+          return { text: "Faltan ~" + months + " meses", level: "" };
+        }
+
+        function daysBetween(target) {
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          const diff = target.getTime() - today.getTime();
+          return Math.ceil(diff / (1000 * 60 * 60 * 24));
+        }
+
+        document.querySelectorAll(".fecha-card").forEach((card) => {
+          const cuposDisp = parseInt(
+            card.dataset.cuposDisponibles || "0",
+            10
+          );
+          const total = parseInt(card.dataset.cuposTotal || "0", 10);
+          const fecha = card.dataset.fecha || "";
+          const eventDateStr = card.dataset.eventDate || "";
+          const eventDate = eventDateStr ? new Date(eventDateStr + "T00:00:00") : null;
+          const daysUntil = eventDate ? daysBetween(eventDate) : 999;
+
+          // Resolver status (manual override > auto)
+          let status = card.dataset.status;
+          if (!status || status === "auto") {
+            status = resolveStatus(cuposDisp, total, daysUntil);
+          }
+          card.dataset.status = status;
+
+          // Badge de cupos. En cards is-special va inline dentro del
+          // flag-row (al lado del badge "Edición especial") para no taparse;
+          // en el resto, queda absolute en la esquina superior derecha.
+          const badge = document.createElement("span");
+          badge.className = "fecha-status";
+          badge.innerHTML =
+            '<span class="dot"></span>' +
+            (STATUS_LABELS[status] || STATUS_LABELS.disponible);
+          const flagRow = card.querySelector(".fecha-flag-row");
+          if (flagRow && card.classList.contains("is-special")) {
+            badge.classList.add("is-inline");
+            flagRow.appendChild(badge);
+          } else {
+            card.appendChild(badge);
+          }
+
+          // Texto cupos
+          const numEl = card.querySelector(".js-cupos-num");
+          const textEl = card.querySelector(".js-cupos-text");
+          if (numEl && textEl) {
+            if (status === "agotado") {
+              numEl.textContent = "Sin cupos";
+              textEl.textContent = " — escríbenos para lista de espera";
+            } else if (status === "pocos") {
+              numEl.textContent = cuposDisp;
+              textEl.textContent =
+                cuposDisp === 1
+                  ? " último cupo de " + total
+                  : " últimos cupos de " + total;
+            } else {
+              numEl.textContent = cuposDisp;
+              textEl.textContent =
+                " de " + total + " cupos disponibles";
+            }
+          }
+
+          // Progress bar (cupos ocupados / total)
+          const fill = card.querySelector(".js-progress-fill");
+          if (fill && total > 0) {
+            const ocupados = Math.max(0, total - cuposDisp);
+            const pct = Math.min(100, (ocupados / total) * 100);
+            // Pequeño delay para que se anime al montar
+            requestAnimationFrame(() => {
+              fill.style.width = pct + "%";
+            });
+          }
+
+          // Countdown contextual
+          const countdownEl = card.querySelector(".js-countdown");
+          if (countdownEl && eventDate) {
+            const cd = formatCountdown(daysUntil);
+            countdownEl.textContent = cd.text;
+            countdownEl.className =
+              "fecha-countdown js-countdown" +
+              (cd.level ? " " + cd.level : "");
+          }
+
+          // CTA → WhatsApp con fecha + precio (cuando es edición especial)
+          const cta = card.querySelector(".js-fecha-cta");
+          const ctaLabel = card.querySelector(".js-cta-label");
+          const isSpecial = card.classList.contains("is-special");
+          const price = card.dataset.price || "";
+          const priceTag =
+            isSpecial && price ? " (" + price + ")" : "";
+
+          if (cta) {
+            if (status === "agotado") {
+              const msg = encodeURIComponent(
+                "Hola! El curso del " +
+                  fecha +
+                  " está agotado. ¿Me puedes sumar a la lista de espera?"
+              );
+              cta.href = "https://wa.me/" + WHATSAPP + "?text=" + msg;
+              if (ctaLabel) ctaLabel.textContent = "Lista de espera";
+            } else {
+              const msg = encodeURIComponent(
+                "Hola! Quiero reservar mi lugar en el curso " +
+                  COURSE +
+                  " del " +
+                  fecha +
+                  priceTag +
+                  "."
+              );
+              cta.href = "https://wa.me/" + WHATSAPP + "?text=" + msg;
+              if (ctaLabel) ctaLabel.textContent = "Reservar lugar";
+            }
+          }
+        });
+
+        // ===== Reveal on scroll (IntersectionObserver) =====
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-in");
+                  io.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+          );
+          document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+        } else {
+          document
+            .querySelectorAll(".reveal")
+            .forEach((el) => el.classList.add("is-in"));
+        }
+
+        // ===== Smooth scroll para anchors =====
+        document.querySelectorAll('a[href^="#"]').forEach((a) => {
+          a.addEventListener("click", (e) => {
+            const id = a.getAttribute("href");
+            if (id && id.length > 1 && document.querySelector(id)) {
+              e.preventDefault();
+              document
+                .querySelector(id)
+                .scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
