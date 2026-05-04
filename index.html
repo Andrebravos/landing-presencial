@@ -836,11 +836,17 @@
         height: 12px;
       }
 
-      /* ===== Fechas ===== */
+      /* ===== Fechas =====
+         Cada card está construida en 7 zonas verticales con min-height
+         fijo. La grilla del padre estira todas las cards a la misma
+         altura, y los min-height por zona garantizan que cada elemento
+         (chip de sede, fecha grande, dirección, precio, progress, CTA)
+         quede a EXACTAMENTE la misma coordenada Y entre las 4 cards. */
       .fechas-grid {
         display: grid;
-        gap: 1.25rem;
+        gap: 1.5rem;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        align-items: stretch;
       }
 
       @media (min-width: 1280px) {
@@ -860,7 +866,65 @@
         box-shadow: var(--shadow-card);
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.85rem;
+      }
+
+      .fecha-zone-status {
+        min-height: 28px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+
+      .fecha-zone-sede {
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        flex-wrap: nowrap;
+      }
+
+      .fecha-zone-date {
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        border-top: 1px solid var(--border);
+        padding-top: 0.95rem;
+      }
+
+      .fecha-zone-meta {
+        min-height: 96px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        font-size: 0.875rem;
+        color: var(--text-soft);
+        border-top: 1px solid var(--border);
+        padding-top: 0.95rem;
+      }
+
+      .fecha-zone-price {
+        min-height: 92px;
+        display: flex;
+        align-items: stretch;
+      }
+
+      .fecha-zone-price .fecha-price-chip {
+        flex: 1 1 auto;
+        margin: 0;
+      }
+
+      .fecha-zone-cupos {
+        min-height: 72px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        justify-content: center;
+      }
+
+      .fecha-zone-cta {
+        margin-top: auto;
       }
 
       .fecha-card[data-status="pocos"] {
@@ -890,31 +954,6 @@
         letter-spacing: 0.1em;
         white-space: nowrap;
         flex-shrink: 0;
-      }
-
-      /* Inline (dentro de eyebrow-row o flag-row) — empuja a la derecha
-         con margin-left auto, y wrappea bajo el eyebrow si no entra. */
-      .fecha-status.is-inline {
-        margin-left: auto;
-      }
-
-      .fecha-eyebrow-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.6rem;
-        flex-wrap: wrap;
-        margin-top: 0.25rem;
-      }
-
-      .fecha-eyebrow-row .fecha-month {
-        margin-top: 0;
-        flex: 1 1 auto;
-        min-width: 0;
-      }
-
-      .fecha-flag-row {
-        width: 100%;
       }
 
       [data-status="disponible"] .fecha-status {
@@ -966,9 +1005,12 @@
         font-size: 0.6875rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 0.18em;
+        letter-spacing: 0.14em;
         color: var(--accent-red-light);
         margin-top: 0.25rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .fecha-day {
@@ -984,16 +1026,6 @@
         font-size: 0.8125rem;
         color: var(--text-muted);
         font-weight: 500;
-      }
-
-      .fecha-meta {
-        display: flex;
-        flex-direction: column;
-        gap: 0.45rem;
-        font-size: 0.875rem;
-        color: var(--text-soft);
-        border-top: 1px solid var(--border);
-        padding-top: 0.85rem;
       }
 
       .fecha-meta-row {
@@ -1042,7 +1074,6 @@
         background: rgba(255, 255, 255, 0.06);
         border-radius: 999px;
         overflow: hidden;
-        margin-top: 0.5rem;
       }
 
       .fecha-progress-fill {
@@ -1064,18 +1095,23 @@
         background: var(--text-dim);
       }
 
-      /* Special edition styling — Chile / Argentina / preventa */
-      .fecha-card.is-special {
+      /* Tratamiento dorado para cards premium — Puerto Varas y
+         Buenos Aires. Mantiene la misma estructura que las regulares,
+         solo agrega un acento dorado sutil (border-top, glow en hover,
+         tinte en chip de sede y caja de precio). El badge de status
+         (verde) y el CTA verde NO se tocan, para mantener consistencia
+         funcional entre todas las cards. */
+      .fecha-card.is-gold {
         background: linear-gradient(
           155deg,
           var(--bg-card) 0%,
-          rgba(45, 107, 228, 0.08) 60%,
-          rgba(159, 197, 255, 0.05) 100%
+          rgba(212, 168, 87, 0.06) 60%,
+          rgba(244, 212, 136, 0.04) 100%
         );
-        border-color: rgba(159, 197, 255, 0.3);
+        border-color: rgba(212, 168, 87, 0.3);
       }
 
-      .fecha-card.is-special::after {
+      .fecha-card.is-gold::after {
         content: "";
         position: absolute;
         top: 0;
@@ -1084,18 +1120,18 @@
         height: 3px;
         background: linear-gradient(
           90deg,
-          var(--accent-blue) 0%,
-          var(--accent-blue-light) 50%,
-          var(--accent-blue) 100%
+          #d4a857 0%,
+          #f4d488 50%,
+          #d4a857 100%
         );
         border-radius: 16px 16px 0 0;
       }
 
-      .fecha-flag-row {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-        flex-wrap: wrap;
+      .fecha-card.is-gold:not([data-status="agotado"]):hover {
+        border-color: #d4a857;
+        box-shadow: 0 0 0 1px #d4a857,
+          0 8px 24px rgba(212, 168, 87, 0.28),
+          0 2px 4px rgba(0, 0, 0, 0.25);
       }
 
       .fecha-flag {
@@ -1116,78 +1152,118 @@
         display: block;
       }
 
+      /* Chip "Sede [ciudad]" — uniforme en las 4 cards. Neutro por
+         defecto; las cards .is-gold (Puerto Varas, Buenos Aires)
+         le aplican un override dorado más abajo. */
       .fecha-special-badge {
         display: inline-flex;
         align-items: center;
         gap: 0.35rem;
         padding: 0.3rem 0.6rem;
         border-radius: var(--radius-pill);
-        background: linear-gradient(
-          135deg,
-          rgba(45, 107, 228, 0.18) 0%,
-          rgba(159, 197, 255, 0.1) 100%
-        );
-        border: 1px solid rgba(159, 197, 255, 0.4);
-        color: var(--accent-blue-light);
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-soft);
         font-size: 0.625rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
+        white-space: nowrap;
+        flex-shrink: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       .fecha-special-badge svg {
         width: 11px;
         height: 11px;
+        flex-shrink: 0;
       }
 
+      .fecha-card.is-gold .fecha-special-badge {
+        background: rgba(212, 168, 87, 0.08);
+        border-color: rgba(212, 168, 87, 0.4);
+        color: #f4d488;
+      }
+
+      /* Caja de precio — misma estructura/altura para las 4 cards.
+         Es una flex column centrada verticalmente. La línea 1 es el
+         bloque [precio + moneda] (.fecha-price-line) que NUNCA wrappea.
+         La línea 2 (opcional, solo Argentina) es la pill .price-note. */
       .fecha-price-chip {
         display: flex;
-        align-items: baseline;
-        gap: 0.4rem;
-        padding: 0.6rem 0.8rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        margin-top: 0.25rem;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem 1.25rem;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04) 0%,
+          rgba(255, 255, 255, 0.015) 100%
+        );
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        width: 100%;
+        min-height: 92px;
       }
 
-      .fecha-card.is-special .fecha-price-chip {
-        background: linear-gradient(
-          135deg,
-          rgba(45, 107, 228, 0.1) 0%,
-          rgba(52, 211, 153, 0.06) 100%
-        );
-        border-color: rgba(159, 197, 255, 0.35);
+      .fecha-card.is-gold .fecha-price-chip {
+        border-color: rgba(212, 168, 87, 0.35);
+        box-shadow: inset 0 0 0 1px rgba(212, 168, 87, 0.1),
+          0 0 20px -10px rgba(212, 168, 87, 0.3);
+      }
+
+      /* Línea horizontal [precio grande] [moneda chica].
+         flex-wrap: nowrap + white-space: nowrap garantizan que nunca
+         se rompa, sin importar el ancho de la card. El precio escala
+         con clamp() si la card es muy angosta. */
+      .fecha-price-line {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: nowrap;
+        gap: 0.4rem;
+        min-width: 0;
       }
 
       .fecha-price-chip .price-amount {
         color: #fff;
         font-weight: 700;
-        font-size: 1.0625rem;
-        letter-spacing: -0.01em;
+        font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
       }
 
       .fecha-price-chip .price-currency {
-        color: var(--text-muted);
-        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.8125rem;
         font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        white-space: nowrap;
+        flex-shrink: 0;
       }
 
+      /* Pill verde "PREVENTA · CUPOS LIMITADOS" — solo Argentina.
+         Va en su propia línea bajo el precio, alineada a la izquierda. */
       .fecha-price-chip .price-note {
-        color: var(--success-light);
-        font-size: 0.6875rem;
+        align-self: flex-start;
+        display: inline-flex;
+        align-items: center;
+        padding: 0.25rem 0.625rem;
+        background: rgba(74, 222, 128, 0.1);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        color: #4ade80;
+        font-size: 0.625rem;
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        margin-left: auto;
-      }
-
-      .fecha-card:not(.is-special) .fecha-price-chip .price-note {
-        color: var(--text-muted);
+        border-radius: 999px;
+        white-space: nowrap;
       }
 
       .fecha-card .btn {
-        margin-top: auto;
         font-size: 0.875rem;
         padding: 0.7rem 1rem;
       }
@@ -2010,19 +2086,12 @@
         }
 
         .fecha-price-chip {
-          padding: 0.5rem 0.65rem;
-          flex-wrap: wrap;
-        }
-
-        .fecha-price-chip .price-amount {
-          font-size: 0.9375rem;
+          padding: 0.85rem 1rem;
         }
 
         .fecha-price-chip .price-note {
-          font-size: 0.625rem;
-          margin-left: 0;
-          width: 100%;
-          margin-top: 0.15rem;
+          font-size: 0.575rem;
+          padding: 0.2rem 0.5rem;
         }
 
         /* Instructor */
@@ -2241,14 +2310,6 @@
           <br />
           y <span class="text-shimmer">Ejecución</span>
         </h1>
-        <p class="lead">
-          Reconstruye tu técnica desde la teoría — y tu teoría desde la
-          técnica. Sábado: el marco que respalda cada decisión clínica.
-          Domingo: los siete patrones fundamentales bajo la barra,
-          corregidos en vivo. Un fin de semana, el rigor técnico que tus
-          clientes notan en la primera semana.
-        </p>
-
         <div class="hero-cards">
           <article class="hero-card">
             <div class="icon-circle">
@@ -2561,109 +2622,61 @@
             <article class="module-card">
               <span class="num">01 · Bases</span>
               <h3>Revisión Biomecánica y Bases del Movimiento</h3>
-              <p>
-                Planos, ejes, palancas. El lenguaje técnico que tienes que
-                dominar para no improvisar al programar.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">02 · Bases</span>
               <h3>Matriz de la Selección de Ejercicios</h3>
-              <p>
-                El sistema con el que decides qué ejercicio es el correcto para
-                este cliente, ahora — no en abstracto.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">03 · Anatomía</span>
               <h3>Anatomía Funcional · Glúteos</h3>
-              <p>
-                Mayor, medio, menor. División ilíaca y sacra. Función real
-                según rango de cadera y tarea motora.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">04 · Anatomía</span>
               <h3>Anatomía Funcional · Isquiosurales</h3>
-              <p>
-                Biarticulares y su rol en cadera vs rodilla. Por qué se rompen
-                cuando se programan mal.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">05 · Anatomía</span>
               <h3>Anatomía Funcional · Cuádriceps</h3>
-              <p>
-                Vastos, recto femoral y comportamiento articular según
-                profundidad y posición de tronco.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">06 · Anatomía</span>
               <h3>Anatomía Funcional · Deltoides</h3>
-              <p>
-                Anterior, medio, posterior. Cómo seleccionar el ejercicio según
-                la porción que estás priorizando.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">07 · Anatomía</span>
               <h3>Anatomía Funcional · Bíceps</h3>
-              <p>
-                Cabeza larga vs corta. Posición de hombro y rotación del
-                antebrazo como variables de selección.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">08 · Anatomía</span>
               <h3>Anatomía Funcional · Tríceps</h3>
-              <p>
-                Cabeza larga, lateral, medial. Por qué la posición del codo
-                cambia todo lo que crees saber del press.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">09 · Anatomía</span>
               <h3>Anatomía Funcional · Pectoral</h3>
-              <p>
-                Mayor y menor. Ángulo de banco, recorrido y la diferencia
-                entre activar y crecer.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">10 · Anatomía</span>
               <h3>Anatomía Funcional · Dorsal Ancho</h3>
-              <p>
-                Origen, inserción y comportamiento durante pulls verticales y
-                horizontales. Lectura aplicada al gesto.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">11 · Programación</span>
               <h3>Programación para el Entrenamiento de Fuerza</h3>
-              <p>
-                Microciclo, mesociclo, manejo de volumen e intensidad para
-                clientes reales — no atletas pro de Instagram.
-              </p>
             </article>
 
             <article class="module-card">
               <span class="num">12 · Cierre</span>
               <h3>Revisión de la Evidencia Científica</h3>
-              <p>
-                Qué dice la ciencia hoy, qué se exagera, qué se ignora.
-                Lectura crítica para que tomes mejores decisiones.
-              </p>
             </article>
           </div>
         </div>
@@ -2696,10 +2709,6 @@
                 Práctico
               </span>
               <h3>Lunges</h3>
-              <p>
-                Estocadas, walking, reverse y deficit. Lectura de cadera,
-                rodilla y pie. Cuándo usar cada variante.
-              </p>
             </article>
 
             <article class="module-card practice">
@@ -2721,10 +2730,6 @@
                 Práctico
               </span>
               <h3>Squats</h3>
-              <p>
-                Back, front, goblet, hack. Profundidad, ángulo de tronco,
-                relación cadera–rodilla–tobillo aplicada al cliente.
-              </p>
             </article>
 
             <article class="module-card practice">
@@ -2746,10 +2751,27 @@
                 Práctico
               </span>
               <h3>Presses</h3>
-              <p>
-                Press banca, inclinado, militar. Trayectoria de barra, ángulo
-                de codo y selección según porción del pectoral o deltoides.
-              </p>
+            </article>
+
+            <article class="module-card practice">
+              <span class="icon-tag">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6.5 6.5 17.5 17.5"></path>
+                  <path d="M21 21l-1-1"></path>
+                  <path d="M3 3l1 1"></path>
+                </svg>
+                Práctico
+              </span>
+              <h3>Flys</h3>
             </article>
 
             <article class="module-card practice">
@@ -2771,10 +2793,6 @@
                 Práctico
               </span>
               <h3>Pulls</h3>
-              <p>
-                Verticales y horizontales. Dominadas, remos, jalones. Qué
-                miras, qué corriges, qué dejas pasar.
-              </p>
             </article>
 
             <article class="module-card practice">
@@ -2796,10 +2814,6 @@
                 Práctico
               </span>
               <h3>Hinge</h3>
-              <p>
-                Peso muerto convencional, sumo, rumano. Bisagra de cadera real
-                — y por qué la mayoría la programa mal.
-              </p>
             </article>
 
             <article class="module-card practice">
@@ -2821,10 +2835,6 @@
                 Práctico
               </span>
               <h3>Bridges</h3>
-              <p>
-                Hip thrust y glute bridge. Set up, posición de pelvis, rango
-                útil real para crecimiento del glúteo.
-              </p>
             </article>
 
             <article class="module-card practice">
@@ -2846,10 +2856,6 @@
                 Práctico
               </span>
               <h3>Hip Extension</h3>
-              <p>
-                Back extension, 45°, GHR. Diferenciar hinge de extensión de
-                cadera y cuándo usar cada estímulo.
-              </p>
             </article>
           </div>
         </div>
@@ -2923,24 +2929,48 @@
             data-event-date="2026-05-09"
             data-price="$230.000 CLP"
           >
-            <div>
+            <div class="fecha-zone-status"></div>
+            <div class="fecha-zone-sede">
+              <span class="fecha-flag" role="img" aria-label="Bandera de Chile">
+                <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="30" height="10" fill="#FFFFFF"/>
+                  <rect y="10" width="30" height="10" fill="#D52B1E"/>
+                  <rect width="10" height="10" fill="#0039A6"/>
+                  <polygon points="5,2.7 5.7,4.7 7.8,4.7 6.1,5.9 6.7,8 5,6.7 3.3,8 3.9,5.9 2.2,4.7 4.3,4.7" fill="#FFFFFF"/>
+                </svg>
+              </span>
+              <span class="fecha-special-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Sede Santiago
+              </span>
+            </div>
+            <div class="fecha-zone-date">
               <div class="fecha-month">Mayo · Sábado y domingo</div>
               <div class="fecha-day">09 — 10</div>
               <div class="fecha-year">2026</div>
             </div>
-            <div class="fecha-meta">
+            <div class="fecha-zone-meta">
               <div class="fecha-meta-row">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>Physica · Av. Vitacura 3565, local 103</span>
+                <span>Physica</span>
               </div>
               <div class="fecha-meta-row">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span>Sáb 13:00–20:00 · Dom 12:00–18:30</span>
               </div>
+            </div>
+            <div class="fecha-zone-price">
               <div class="fecha-price-chip">
-                <span class="price-amount">$230.000</span>
-                <span class="price-currency">CLP</span>
+                <div class="fecha-price-line">
+                  <span class="price-amount">$230.000</span>
+                  <span class="price-currency">CLP</span>
+                </div>
               </div>
+            </div>
+            <div class="fecha-zone-cupos">
               <div class="fecha-cupos">
                 <strong class="js-cupos-num"></strong>
                 <span class="js-cupos-text"></span>
@@ -2951,7 +2981,7 @@
               <div class="fecha-countdown js-countdown"></div>
             </div>
             <a
-              class="btn btn-whatsapp js-fecha-cta"
+              class="btn btn-whatsapp js-fecha-cta fecha-zone-cta"
               href="#"
               target="_blank"
               rel="noopener"
@@ -2964,7 +2994,7 @@
           </article>
 
           <article
-            class="fecha-card is-special"
+            class="fecha-card is-gold"
             data-status="auto"
             data-cupos-disponibles="10"
             data-cupos-total="10"
@@ -2972,7 +3002,8 @@
             data-event-date="2026-10-02"
             data-price="$120.000 CLP"
           >
-            <div class="fecha-flag-row">
+            <div class="fecha-zone-status"></div>
+            <div class="fecha-zone-sede">
               <span class="fecha-flag" role="img" aria-label="Bandera de Chile">
                 <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
                   <rect width="30" height="10" fill="#FFFFFF"/>
@@ -2982,18 +3013,19 @@
                 </svg>
               </span>
               <span class="fecha-special-badge">
-                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                  <path d="M8 .5l1.7 5.3h5.6l-4.5 3.3 1.7 5.3L8 11.1l-4.5 3.3 1.7-5.3L.7 5.8h5.6L8 .5z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
                 </svg>
-                Edición especial · Chile
+                Sede Puerto Varas
               </span>
             </div>
-            <div>
+            <div class="fecha-zone-date">
               <div class="fecha-month">Octubre · Sábado y domingo</div>
               <div class="fecha-day">02 — 03</div>
               <div class="fecha-year">2026</div>
             </div>
-            <div class="fecha-meta">
+            <div class="fecha-zone-meta">
               <div class="fecha-meta-row">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                 <span>Puerto Varas · Gimnasio Epic</span>
@@ -3002,11 +3034,16 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span>Sáb 13:00–20:00 · Dom 12:00–18:30</span>
               </div>
+            </div>
+            <div class="fecha-zone-price">
               <div class="fecha-price-chip">
-                <span class="price-amount">$120.000</span>
-                <span class="price-currency">CLP</span>
-                <span class="price-note">Precio especial</span>
+                <div class="fecha-price-line">
+                  <span class="price-amount">$120.000</span>
+                  <span class="price-currency">CLP</span>
+                </div>
               </div>
+            </div>
+            <div class="fecha-zone-cupos">
               <div class="fecha-cupos">
                 <strong class="js-cupos-num"></strong>
                 <span class="js-cupos-text"></span>
@@ -3017,7 +3054,7 @@
               <div class="fecha-countdown js-countdown"></div>
             </div>
             <a
-              class="btn btn-whatsapp js-fecha-cta"
+              class="btn btn-whatsapp js-fecha-cta fecha-zone-cta"
               href="#"
               target="_blank"
               rel="noopener"
@@ -3038,24 +3075,48 @@
             data-event-date="2026-10-10"
             data-price="$230.000 CLP"
           >
-            <div>
+            <div class="fecha-zone-status"></div>
+            <div class="fecha-zone-sede">
+              <span class="fecha-flag" role="img" aria-label="Bandera de Chile">
+                <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="30" height="10" fill="#FFFFFF"/>
+                  <rect y="10" width="30" height="10" fill="#D52B1E"/>
+                  <rect width="10" height="10" fill="#0039A6"/>
+                  <polygon points="5,2.7 5.7,4.7 7.8,4.7 6.1,5.9 6.7,8 5,6.7 3.3,8 3.9,5.9 2.2,4.7 4.3,4.7" fill="#FFFFFF"/>
+                </svg>
+              </span>
+              <span class="fecha-special-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Sede Santiago
+              </span>
+            </div>
+            <div class="fecha-zone-date">
               <div class="fecha-month">Octubre · Sábado y domingo</div>
               <div class="fecha-day">10 — 11</div>
               <div class="fecha-year">2026</div>
             </div>
-            <div class="fecha-meta">
+            <div class="fecha-zone-meta">
               <div class="fecha-meta-row">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>Physica · Av. Vitacura 3565, local 103</span>
+                <span>Physica</span>
               </div>
               <div class="fecha-meta-row">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span>Sáb 13:00–20:00 · Dom 12:00–18:30</span>
               </div>
+            </div>
+            <div class="fecha-zone-price">
               <div class="fecha-price-chip">
-                <span class="price-amount">$230.000</span>
-                <span class="price-currency">CLP</span>
+                <div class="fecha-price-line">
+                  <span class="price-amount">$230.000</span>
+                  <span class="price-currency">CLP</span>
+                </div>
               </div>
+            </div>
+            <div class="fecha-zone-cupos">
               <div class="fecha-cupos">
                 <strong class="js-cupos-num"></strong>
                 <span class="js-cupos-text"></span>
@@ -3066,7 +3127,7 @@
               <div class="fecha-countdown js-countdown"></div>
             </div>
             <a
-              class="btn btn-whatsapp js-fecha-cta"
+              class="btn btn-whatsapp js-fecha-cta fecha-zone-cta"
               href="#"
               target="_blank"
               rel="noopener"
@@ -3079,7 +3140,7 @@
           </article>
 
           <article
-            class="fecha-card is-special"
+            class="fecha-card is-gold"
             data-status="auto"
             data-cupos-disponibles="18"
             data-cupos-total="30"
@@ -3087,7 +3148,8 @@
             data-event-date="2026-11-14"
             data-price="USD $200"
           >
-            <div class="fecha-flag-row">
+            <div class="fecha-zone-status"></div>
+            <div class="fecha-zone-sede">
               <span class="fecha-flag" role="img" aria-label="Bandera de Argentina">
                 <svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
                   <rect width="30" height="6.67" fill="#74ACDF"/>
@@ -3097,32 +3159,38 @@
                 </svg>
               </span>
               <span class="fecha-special-badge">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="8" cy="8" r="7"/>
-                  <path d="M1 8h14"/>
-                  <path d="M8 1c2 2.2 3 4.5 3 7s-1 4.8-3 7c-2-2.2-3-4.5-3-7s1-4.8 3-7z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
                 </svg>
-                Edición internacional · Argentina
+                Sede Buenos Aires
               </span>
             </div>
-            <div>
+            <div class="fecha-zone-date">
               <div class="fecha-month">Noviembre · Sábado y domingo</div>
               <div class="fecha-day">14 — 15</div>
               <div class="fecha-year">2026</div>
             </div>
-            <div class="fecha-meta">
+            <div class="fecha-zone-meta">
               <div class="fecha-meta-row">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span>Buenos Aires · junto a Level Fit</span>
+                <span>Buenos Aires · junto a Level&nbsp;Fit</span>
               </div>
               <div class="fecha-meta-row">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <span>Sáb 13:00–20:00 · Dom 12:00–18:30</span>
               </div>
+            </div>
+            <div class="fecha-zone-price">
               <div class="fecha-price-chip">
-                <span class="price-amount">USD $200</span>
+                <div class="fecha-price-line">
+                  <span class="price-amount">$200</span>
+                  <span class="price-currency">USD</span>
+                </div>
                 <span class="price-note">Preventa · cupos limitados</span>
               </div>
+            </div>
+            <div class="fecha-zone-cupos">
               <div class="fecha-cupos">
                 <strong class="js-cupos-num"></strong>
                 <span class="js-cupos-text"></span>
@@ -3133,7 +3201,7 @@
               <div class="fecha-countdown js-countdown"></div>
             </div>
             <a
-              class="btn btn-whatsapp js-fecha-cta"
+              class="btn btn-whatsapp js-fecha-cta fecha-zone-cta"
               href="#"
               target="_blank"
               rel="noopener"
@@ -3246,11 +3314,8 @@
                   <span class="currency">CLP</span>
                 </div>
                 <p class="pricing-sub">
-                  Incluye los 2 días, material teórico-práctico y coffee break.
-                  <br />
-                  <span style="color: var(--accent-blue-light); font-weight: 600;">
-                    Ediciones especiales (Puerto Varas, Buenos Aires) tienen valor diferenciado — ver fechas.
-                  </span>
+                  Valor de la sede Physica (Santiago). Incluye los 2 días,
+                  material teórico-práctico y coffee break.
                 </p>
                 <div class="methods-row" aria-label="Métodos de pago aceptados">
                   <span class="method-chip">
@@ -3288,9 +3353,14 @@
 
               <!-- Lado derecho: opciones de pago -->
               <div>
-                <h3 style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--success-light); margin: 0 0 1rem;">
+                <h3 style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--success-light); margin: 0 0 0.5rem;">
                   Opciones de pago
                 </h3>
+                <p style="font-size: 0.8125rem; color: rgba(255,255,255,0.55); line-height: 1.5; margin: 0 0 1.15rem;">
+                  Aplica solo a la sede Physica (Santiago). Las ediciones de
+                  Puerto Varas y Buenos Aires se coordinan directamente con
+                  el anfitrión local vía WhatsApp.
+                </p>
 
                 <div class="pricing-options">
                   <div class="pricing-option">
@@ -3472,18 +3542,18 @@
           }
           card.dataset.status = status;
 
-          // Badge de cupos. En cards is-special va inline dentro del
-          // flag-row (al lado del badge "Edición especial") para no taparse;
-          // en el resto, queda absolute en la esquina superior derecha.
+          // Badge de cupos: cada card reserva la zona 1 (.fecha-zone-status)
+          // con min-height fijo en la esquina superior derecha. El badge
+          // se inyecta acá vía JS — la altura está reservada por CSS
+          // antes para que no haya layout shift.
           const badge = document.createElement("span");
           badge.className = "fecha-status";
           badge.innerHTML =
             '<span class="dot"></span>' +
             (STATUS_LABELS[status] || STATUS_LABELS.disponible);
-          const flagRow = card.querySelector(".fecha-flag-row");
-          if (flagRow && card.classList.contains("is-special")) {
-            badge.classList.add("is-inline");
-            flagRow.appendChild(badge);
+          const statusZone = card.querySelector(".fecha-zone-status");
+          if (statusZone) {
+            statusZone.appendChild(badge);
           } else {
             card.appendChild(badge);
           }
@@ -3532,10 +3602,10 @@
           // CTA → WhatsApp con fecha + precio (cuando es edición especial)
           const cta = card.querySelector(".js-fecha-cta");
           const ctaLabel = card.querySelector(".js-cta-label");
-          const isSpecial = card.classList.contains("is-special");
+          const isGold = card.classList.contains("is-gold");
           const price = card.dataset.price || "";
           const priceTag =
-            isSpecial && price ? " (" + price + ")" : "";
+            isGold && price ? " (" + price + ")" : "";
 
           if (cta) {
             if (status === "agotado") {
