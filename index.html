@@ -694,11 +694,30 @@
         font-size: 0.875rem;
         color: var(--text-muted);
         margin-bottom: 1.5rem;
+        text-align: center;
+        line-height: 1.55;
       }
 
       .tabs-meta strong {
         color: #fff;
         font-weight: 600;
+      }
+
+      /* "Sábado: 13:00 — 20:00 hrs" como bloque nowrap — la etiqueta
+         nunca se separa de su horario aunque la línea wrappee. */
+      .tabs-meta .day-time {
+        white-space: nowrap;
+      }
+
+      /* En mobile cada día va en su propia línea, ocultamos el "·"
+         central y eliminamos el wrap arbitrario de iOS. */
+      @media (max-width: 640px) {
+        .tabs-meta-row {
+          display: block;
+        }
+        .tabs-meta-sep {
+          display: none;
+        }
       }
 
       .tab-panel {
@@ -2605,9 +2624,15 @@
           </div>
 
           <p class="tabs-meta">
-            <strong>Sábado:</strong> 13:00 — 20:00 hrs · 12 bloques teóricos
-            &nbsp;·&nbsp;
-            <strong>Domingo:</strong> 12:00 — 18:30 hrs · 7 patrones ejecutados
+            <span class="tabs-meta-row">
+              <span class="day-time"><strong>Sábado:</strong> 13:00 — 20:00 hrs</span>
+              · 12 bloques teóricos
+            </span>
+            <span class="tabs-meta-sep" aria-hidden="true">&nbsp;·&nbsp;</span>
+            <span class="tabs-meta-row">
+              <span class="day-time"><strong>Domingo:</strong> 12:00 — 18:30 hrs</span>
+              · 7 patrones ejecutados
+            </span>
           </p>
         </div>
 
