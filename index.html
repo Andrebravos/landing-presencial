@@ -955,6 +955,17 @@
         opacity: 0.65;
       }
 
+      .fecha-card[data-status="pasada"] {
+        opacity: 0.55;
+        filter: grayscale(0.7);
+      }
+
+      .fecha-card[data-status="pasada"]:hover {
+        transform: none;
+        box-shadow: var(--shadow-card);
+        border-color: var(--border);
+      }
+
       .fecha-card:not([data-status="agotado"]):hover {
         transform: translateY(-2px);
         border-color: var(--accent-red);
@@ -991,6 +1002,17 @@
         background: rgba(74, 98, 128, 0.18);
         color: var(--text-muted);
         border: 1px solid var(--border);
+      }
+
+      [data-status="pasada"] .fecha-status {
+        background: rgba(74, 98, 128, 0.18);
+        color: var(--text-muted);
+        border: 1px solid var(--border);
+      }
+
+      [data-status="pasada"] .fecha-status .dot {
+        animation: none;
+        opacity: 0.6;
       }
 
       .fecha-status .dot {
@@ -1087,6 +1109,10 @@
         color: var(--accent-red-light);
       }
 
+      .fecha-countdown.is-past {
+        color: var(--text-dim);
+      }
+
       /* Mini progress bar inside fecha card */
       .fecha-progress {
         height: 4px;
@@ -1111,6 +1137,10 @@
       }
 
       .fecha-card[data-status="agotado"] .fecha-progress-fill {
+        background: var(--text-dim);
+      }
+
+      .fecha-card[data-status="pasada"] .fecha-progress-fill {
         background: var(--text-dim);
       }
 
@@ -1287,14 +1317,16 @@
         padding: 0.7rem 1rem;
       }
 
-      .fecha-card[data-status="agotado"] .btn {
+      .fecha-card[data-status="agotado"] .btn,
+      .fecha-card[data-status="pasada"] .btn {
         background: rgba(74, 98, 128, 0.18);
         color: var(--text-muted);
         cursor: not-allowed;
         pointer-events: none;
       }
 
-      .fecha-card[data-status="agotado"] .btn:hover {
+      .fecha-card[data-status="agotado"] .btn:hover,
+      .fecha-card[data-status="pasada"] .btn:hover {
         background: rgba(74, 98, 128, 0.18);
         transform: none;
         box-shadow: none;
@@ -2948,7 +2980,7 @@
           <article
             class="fecha-card"
             data-status="auto"
-            data-cupos-disponibles="2"
+            data-cupos-disponibles="0"
             data-cupos-total="12"
             data-fecha="9 y 10 de mayo"
             data-event-date="2026-05-09"
@@ -3021,7 +3053,7 @@
           <article
             class="fecha-card is-gold"
             data-status="auto"
-            data-cupos-disponibles="10"
+            data-cupos-disponibles="8"
             data-cupos-total="10"
             data-fecha="2 y 3 de octubre · Puerto Varas"
             data-event-date="2026-10-02"
@@ -3094,8 +3126,8 @@
           <article
             class="fecha-card"
             data-status="auto"
-            data-cupos-disponibles="6"
-            data-cupos-total="12"
+            data-cupos-disponibles="7"
+            data-cupos-total="10"
             data-fecha="10 y 11 de octubre"
             data-event-date="2026-10-10"
             data-price="$230.000 CLP"
@@ -3503,9 +3535,12 @@
           disponible: "Cupos disponibles",
           pocos: "Últimos cupos",
           agotado: "Agotado",
+          pasada: "Edición finalizada",
         };
 
         function resolveStatus(cuposDisp, total, daysUntil) {
+          // Si la fecha del evento ya pasó, prevalece sobre cualquier otro estado
+          if (daysUntil < 0) return "pasada";
           if (cuposDisp <= 0) return "agotado";
           if (total <= 0) return "disponible";
           const ratio = cuposDisp / total;
@@ -3517,7 +3552,7 @@
         }
 
         function formatCountdown(daysUntil) {
-          if (daysUntil < 0) return { text: "Edición pasada", level: "" };
+          if (daysUntil < 0) return { text: "Edición pasada", level: "is-past" };
           if (daysUntil === 0) return { text: "Es hoy", level: "is-imminent" };
           if (daysUntil === 1)
             return { text: "Faltan 24 horas", level: "is-imminent" };
@@ -3587,7 +3622,10 @@
           const numEl = card.querySelector(".js-cupos-num");
           const textEl = card.querySelector(".js-cupos-text");
           if (numEl && textEl) {
-            if (status === "agotado") {
+            if (status === "pasada") {
+              numEl.textContent = "Edición finalizada";
+              textEl.textContent = " — revisa próximas fechas";
+            } else if (status === "agotado") {
               numEl.textContent = "Sin cupos";
               textEl.textContent = " — escríbenos para lista de espera";
             } else if (status === "pocos") {
@@ -3607,7 +3645,11 @@
           const fill = card.querySelector(".js-progress-fill");
           if (fill && total > 0) {
             const ocupados = Math.max(0, total - cuposDisp);
-            const pct = Math.min(100, (ocupados / total) * 100);
+            // Para ediciones pasadas, llenar al 100% (el evento ya terminó)
+            const pct =
+              status === "pasada"
+                ? 100
+                : Math.min(100, (ocupados / total) * 100);
             // Pequeño delay para que se anime al montar
             requestAnimationFrame(() => {
               fill.style.width = pct + "%";
@@ -3633,7 +3675,13 @@
             isGold && price ? " (" + price + ")" : "";
 
           if (cta) {
-            if (status === "agotado") {
+            if (status === "pasada") {
+              cta.href = "#fechas";
+              cta.removeAttribute("target");
+              cta.setAttribute("aria-disabled", "true");
+              cta.setAttribute("tabindex", "-1");
+              if (ctaLabel) ctaLabel.textContent = "Edición finalizada";
+            } else if (status === "agotado") {
               const msg = encodeURIComponent(
                 "Hola! El curso del " +
                   fecha +
